@@ -219,6 +219,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ad_image_uploads\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

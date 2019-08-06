@@ -21,41 +21,41 @@ namespace PopYourself
                                "" + "Initial Catalog=pop_cul_db;" +
                                "Integrated Security=SSPI;Persist Security Info=false";
             connect = new SqlConnection(connectionString);
-            FileUpload1.Attributes["style"] = "display:none";
         }
 
         protected void postAdbtn_Click(object sender, EventArgs e)
         {
-            if(Page.IsValid)
+            if (Page.IsValid)
             {
 
-            string insertData = "insert into item values (@item_name,@item_category,@item_price," +
-                "@item_city,@item_phone,@item_desc";
-            try
-            {
-                connect.Open();
-                command = new SqlCommand(insertData, connect);
-                command.Parameters.AddWithValue("@item_name", itemNameBox.Text);
-                command.Parameters.AddWithValue("@item_category", categoryDlist.Text);
-                command.Parameters.AddWithValue("@item_price", priceBox.Text);
-                command.Parameters.AddWithValue("@item_city", cityBox.Text);
-                command.Parameters.AddWithValue("@item_phone", pNumBox.Text);
-                command.Parameters.AddWithValue("@item_desc", descBox.Text);
-                command.ExecuteNonQuery();
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "$alert('New ad posted'); window.location = 'INSERT PAGE HERE';", true);
-            }
-            catch (SqlException ex)
-            {
-                Response.Write("Error in SQL!" + ex.Message);
-            }
-            finally
-            {
-                if(connect.State == ConnectionState.Open)
+                string insertData = "insert into item values (@item_name,@item_category,@item_price," +
+                    "@item_city,@item_phone,@item_desc";
+                try
                 {
-                    connect.Close();
+                    connect.Open();
+                    command = new SqlCommand(insertData, connect);
+                    command.Parameters.AddWithValue("@item_name", itemNameBox.Text);
+                    command.Parameters.AddWithValue("@item_category", categoryDlist.Text);
+                    command.Parameters.AddWithValue("@item_price", priceBox.Text);
+                    command.Parameters.AddWithValue("@item_city", cityBox.Text);
+                    command.Parameters.AddWithValue("@item_phone", pNumBox.Text);
+                    command.Parameters.AddWithValue("@item_desc", descBox.Text);
+                    command.ExecuteNonQuery();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "$alert('New ad posted'); window.location = 'INSERT PAGE HERE';", true);
+                }
+                catch (SqlException ex)
+                {
+                    Response.Write("Error in SQL!" + ex.Message);
+                }
+                finally
+                {
+                    if (connect.State == ConnectionState.Open)
+                    {
+                        connect.Close();
+                    }
                 }
             }
-            } else
+            else
             {
                 // -- validation error here
             }
@@ -63,18 +63,28 @@ namespace PopYourself
 
         protected void cancelBtn_Click(object sender, EventArgs e)
         {
+            // -- remove uploaded images if pressed cancel
             Response.Redirect("INSERT PAGE HERE");
         }
 
-        protected void uploadImgBtn_Click(object sender, EventArgs e)
+        protected void uploadBtn_Click(object sender, EventArgs e)
         {
-            if(FileUpload1.HasFile)
+            if (FileUpload1.HasFile)
             {
                 try
                 {
-                    string address = Server.MapPath("~/") + FileUpload1.FileName;
-                    FileUpload1.PostedFile.SaveAs(address);
-                    // -- implementation here
+                    string extension = System.IO.Path.GetExtension(FileUpload1.FileName.ToLower());
+                    string address = Server.MapPath("~\\ad_image_uploads\\") + FileUpload1.FileName.ToLower();
+
+                    if (extension == ".jpg" || extension == ".png" || extension == ".gif")
+                    {
+                        FileUpload1.PostedFile.SaveAs(address);
+                        statusLbl.Text = address;
+                    }
+                    else
+                    {
+                        statusLbl.Text = "Incorrect file extension. Extenstion is: " + extension;
+                    }
                 }
                 catch (Exception ex)
                 {

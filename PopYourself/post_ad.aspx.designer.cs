@@ -22,13 +22,22 @@ namespace PopYourself {
         protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
         
         /// <summary>
-        /// uploadImgBtn control.
+        /// uploadBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button uploadImgBtn;
+        protected global::System.Web.UI.WebControls.Button uploadBtn;
+        
+        /// <summary>
+        /// statusLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label statusLbl;
         
         /// <summary>
         /// itemName control.
