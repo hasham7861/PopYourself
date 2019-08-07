@@ -14,19 +14,24 @@
             </header>
             <div style="margin-top: 30px; padding: 20px 30px; border-radius: 10px; background-color: #F9F9F9;" class="form-group" >
                 <label for="loginEmail">Email</label>
-                <input type="email" class="form-control" id="loginEmail"  aria-describedby="emailHelp" placeholder="Enter email"><br/>
+                <asp:TextBox type="email" runat="server" class="form-control" id="loginEmail"  aria-describedby="emailHelp" placeholder="Enter email"> </asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="loginEmail" EnableClientScript="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Enter email!</asp:RequiredFieldValidator>
+                <br/>
                 <label for="loginPassword">Password</label>
-                <input type="password" class="form-control" id="loginPassword" placeholder="Enter password">
+                <asp:TextBox type="password"  runat="server" class="form-control" id="loginPassword" placeholder="Enter password"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="loginPassword" EnableClientScript="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Enter Password!</asp:RequiredFieldValidator>
                 <br/>
                 <div style="text-align: center;">
-                    
-                    <button style="background-color: #6A84FF; color: white; padding: 5px 50px;"type="submit" class="btn">Login</button>
+                    <asp:Button style="background-color: #6A84FF; color: white; padding: 5px 50px;" ID="btn_login" class="btn" runat="server" Text="Login" OnClick="btn_login_Click" />
                     <br />
                     <br />
-                    <a href="#" >Sign Up?</a>
                     
+                    <asp:Label style="color: red;" ID="lbl_error" runat="server"></asp:Label>
+                    <br />
+                    <br />
+                    <a href="Register.aspx" >Sign Up?</a>
                 </div>
-                </div>
+            </div>
         </div>
     </form>
 <div id="backdrop"></div>

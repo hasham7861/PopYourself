@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Hasham_991498453_Assignment_3;
 
 namespace PopYourself
 {
@@ -11,7 +12,26 @@ namespace PopYourself
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           
         }
+
+        protected void btn_login_Click(object sender, EventArgs e)
+        {
+            if (loginEmail.Text == "" && loginPassword.Text == "") return;
+
+
+            bool validLogin = DatabaseUtil.ValidateLogin(loginEmail.Text,loginPassword.Text);
+
+            if (validLogin)
+            {
+                Response.Redirect("Browse.aspx");
+            }
+            else
+            {
+                lbl_error.Text = "Invalid login! Please Try Again!";
+            }
+        }
+
+      
     }
 }
