@@ -16,7 +16,7 @@ namespace Hasham_991498453_Assignment_3
         {
             if (cnn == null)
             {
-                connectionString = @"Data Source=LAPTOP-B5DGGLB7\SQLEXPRESS;" +
+                connectionString = @"Data Source=RB-PC\\SQLEXPRESS;" +
                                    "" +
                                    "Initial Catalog=master;" +
                                    "Integrated Security=SSPI;Persist Security Info=false";
