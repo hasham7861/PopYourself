@@ -13,6 +13,15 @@ namespace PopYourself {
     public partial class Register {
         
         /// <summary>
+        /// lbl_message control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_message;
+        
+        /// <summary>
         /// txt_email control.
         /// </summary>
         /// <remarks>
@@ -121,22 +130,13 @@ namespace PopYourself {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
         
         /// <summary>
-        /// txt_province control.
+        /// ProvinceList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_province;
-        
-        /// <summary>
-        /// RequiredFieldValidator6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
+        protected global::System.Web.UI.WebControls.DropDownList ProvinceList;
         
         /// <summary>
         /// txt_postalcode control.

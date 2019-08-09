@@ -12,9 +12,14 @@
             <header style="text-align: center;">
                 <h1 style="font-size: 70px;">PØP YØURSELF</h1>
             </header>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label style="color: red; font-size: 20px;" ID="lbl_error" runat="server"></asp:Label><br />
             <div style="margin-top: 30px; padding: 20px 30px; border-radius: 10px; background-color: #F9F9F9;" class="form-group" >
-                <label for="loginEmail">Email</label>
-                <asp:TextBox type="email" runat="server" class="form-control" id="loginEmail"  aria-describedby="emailHelp" placeholder="Enter email"> </asp:TextBox>
+               
+                <label for="loginEmail">Email&nbsp;
+
+                    </label>
+&nbsp;<asp:TextBox type="email" runat="server" class="form-control" id="loginEmail"  aria-describedby="emailHelp" placeholder="Enter email"> </asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="loginEmail" EnableClientScript="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Enter email!</asp:RequiredFieldValidator>
                 <br/>
                 <label for="loginPassword">Password</label>
@@ -26,9 +31,6 @@
                     <br />
                     <br />
                     
-                    <asp:Label style="color: red;" ID="lbl_error" runat="server"></asp:Label>
-                    <br />
-                    <br />
                     <a href="Register.aspx" >Sign Up?</a>
                 </div>
             </div>

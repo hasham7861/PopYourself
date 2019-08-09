@@ -172,8 +172,8 @@
       <DependentUpon>Browse.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Handler\DatabaseUtil.cs" />
-    <Compile Include="Model\Customer.cs" />
+    <Compile Include="Handler\AccountDatabaseUtil.cs" />
+    <Compile Include="Model\Account.cs" />
     <Compile Include="MyAds.aspx.cs">
       <DependentUpon>MyAds.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

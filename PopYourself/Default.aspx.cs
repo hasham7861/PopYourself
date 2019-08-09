@@ -20,10 +20,11 @@ namespace PopYourself
             if (loginEmail.Text == "" && loginPassword.Text == "") return;
 
 
-            bool validLogin = DatabaseUtil.ValidateLogin(loginEmail.Text,loginPassword.Text);
+            bool validLogin = AccountDatabaseUtil.ValidateLogin(loginEmail.Text,loginPassword.Text);
 
             if (validLogin)
             {
+                Session["email"] = loginEmail.Text;
                 Response.Redirect("Browse.aspx");
             }
             else

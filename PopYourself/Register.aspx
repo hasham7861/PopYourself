@@ -8,10 +8,12 @@
 <body>
    
 <form runat="server">
-        <div style="width: 700px; margin-top: 100px; padding: 20px;" class="container">
+        <div style="width: 700px; margin-top:80px; padding: 20px;" class="container">
             <header style="text-align: center;">
                 <h1 style="font-size: 70px;">Register</h1>
             </header>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label style="color: red; font-size: 30px;" ID="lbl_message" runat="server" Text=""></asp:Label>
             <div style="margin-top: 30px; padding: 20px 30px; border-radius: 10px; background-color: #F9F9F9;" class="form-group" >
                 
                 <label for="lbl_email">Email</label>
@@ -51,17 +53,25 @@
                         <br/>
                         </div>
                     <div style="padding-left:0" class="form-group col-md-4">
-                        <label for="lbl_province">Province</label>
-                    <asp:TextBox runat="server" class="form-control" id="txt_province" placeholder="Enter in province"> </asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txt_province" EnableClientScript="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Enter province!</asp:RequiredFieldValidator>
-                    <br/>
+                        <label for="lbl_province">Province</label><asp:DropDownList  class="form-control" ID="ProvinceList" runat="server">
+                            <asp:ListItem Selected="True" Value="NL">NL</asp:ListItem>
+                            <asp:ListItem Value="PE">PE</asp:ListItem>
+                            <asp:ListItem Value="NS">NS</asp:ListItem>
+                            <asp:ListItem Value="NB">ON</asp:ListItem>
+                            <asp:ListItem Value="QC">QC</asp:ListItem>
+                            <asp:ListItem Value="ON">MB</asp:ListItem>
+                            <asp:ListItem Value="SK">SK</asp:ListItem>
+                            <asp:ListItem Value="AB">AB</asp:ListItem>
+                        </asp:DropDownList>
+                    <%--<asp:TextBox runat="server" class="form-control" id="txt_province" placeholder="Enter in province"> </asp:TextBox>--%>
+                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txt_province" EnableClientScript="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Enter province!</asp:RequiredFieldValidator>--%>
+                    <%--<br/>--%>
 
                     </div>
                     <div style="padding-left: 0; padding-right:0" class="form-group col-md-4">
                         <label for="lbl_postalcode">Postal Code</label>
                         <asp:TextBox runat="server" class="form-control" id="txt_postalcode"  placeholder="Enter postalcode"> </asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txt_postalcode" EnableClientScript="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Enter postalcode!</asp:RequiredFieldValidator>
-
                     </div>
                     </div>
                     

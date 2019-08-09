@@ -13,6 +13,15 @@ namespace PopYourself {
     public partial class Default {
         
         /// <summary>
+        /// lbl_error control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_error;
+        
+        /// <summary>
         /// loginEmail control.
         /// </summary>
         /// <remarks>
@@ -56,14 +65,5 @@ namespace PopYourself {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_login;
-        
-        /// <summary>
-        /// lbl_error control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_error;
     }
 }

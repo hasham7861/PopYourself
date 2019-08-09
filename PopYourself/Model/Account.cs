@@ -1,24 +1,23 @@
-﻿/*
- * Author-Name: Hasham Alam
- * Student-No: 991498453
- * Date: 7/23/2019
- */
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 
 namespace Hasham_991498453_Assignment_3
 {
     [DataContract]
-    public class Customer
+    public class Account
     {
         [DataMember]
-        public string Name { get; set; }
+        public string FirstName { get; set; }
         [DataMember]
-        public string Address { get; set; }
+        public string LastName { get; set; }
+        [DataMember]
+        public string City { get; set; }
+        [DataMember]
+        public string Province { get; set; }
         [DataMember]
         public string PostalCode { get; set; }
         [DataMember]
-        public string PhoneNumber { get; set; }
+        public string Phone{ get; set; }
         [DataMember]
         public string UserName { get; set; }
         [DataMember]
