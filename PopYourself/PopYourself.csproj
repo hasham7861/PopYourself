@@ -106,6 +106,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ad_image_uploads\csharpbois.png" />
     <Content Include="Browse.aspx" />
     <Content Include="Content\cyrusStyleSheet.css" />
     <Content Include="Content\Default.css" />
@@ -231,7 +232,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ad_image_uploads\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

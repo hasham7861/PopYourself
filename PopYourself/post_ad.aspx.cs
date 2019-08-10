@@ -1,4 +1,7 @@
-﻿using System;
+﻿//AUTHOR: Cyrus Alatraca
+//ID: 991146084
+//DATE: July 17, 2019
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -30,7 +33,18 @@ namespace PopYourself
             {
                 if (FileUpload1.HasFile)
                 {
-                    fileName = FileUpload1.FileName.ToLower();
+                    try
+                    {
+                        fileName = FileUpload1.FileName.ToLower();
+
+                        FileUpload1.PostedFile.SaveAs(Server.MapPath("~\\ad_image_uploads\\") + fileName);
+                        uploadedImg.ImageUrl = "/ad_image_uploads/" + fileName;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Response.Write(ex.Message);
+                    }
                 }
 
                 string insertData = "insert into item values (@item_name,@item_category,@item_price," +
@@ -73,36 +87,6 @@ namespace PopYourself
             Response.Redirect("INSERT PAGE HERE");
         }
 
-        protected void uploadBtn_Click(object sender, EventArgs e)
-        {
-            if (FileUpload1.HasFile)
-            {
-                try
-                {
-                    string extension = System.IO.Path.GetExtension(FileUpload1.FileName.ToLower());
-                    string fileName = FileUpload1.FileName.ToLower();
-
-                    if (extension == ".jpg" || extension == ".png" || extension == ".gif")
-                    {
-                        FileUpload1.PostedFile.SaveAs(Server.MapPath("~\\ad_image_uploads\\") + fileName);
-                        uploadedImg.ImageUrl = "/ad_image_uploads/" + fileName;
-                    }
-                    else if (extension == "^[a-zA-Z0-9_]+$")
-                    {
-                        statusLbl.Text = "Cannot upload file with filename that contains special characters";
-                    }
-                    else
-                    {
-                        statusLbl.Text = "Incorrect file extension";
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Response.Write(ex.Message);
-                }
-            }
-        }
-
         protected void itemAdValidator_ServerValidate(object source, ServerValidateEventArgs args)
         {
             if (itemNameBox.Text == "" || categoryDlist.SelectedIndex == 0 || double.Parse(priceBox.Text) < 0 || double.Parse(priceBox.Text) > 150000 || cityBox.Text == "" ||
@@ -115,6 +99,23 @@ namespace PopYourself
                     " - Must provide the city location of the item.<br/>" +
                     " - Must provide contact information(valid) for buyer.<br/>" +
                     " - Must provide a brief description about the item.<br/>";
+                args.IsValid = false;
+            }
+
+            string extension = System.IO.Path.GetExtension(FileUpload1.FileName.ToLower());
+
+            if (extension == ".jpg" || extension == ".png" || extension == ".gif")
+            {
+                args.IsValid = true;
+            }
+            else if (extension == "^[a-zA-Z0-9_]+$")
+            {
+                statusLbl.Text = "Cannot upload file with filename that contains special characters";
+                args.IsValid = false;
+            }
+            else
+            {
+                statusLbl.Text = "Incorrect file extension";
                 args.IsValid = false;
             }
         }
