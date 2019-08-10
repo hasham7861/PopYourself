@@ -14,10 +14,13 @@
 
 .img-grid1 {
     grid-area: imgGrid;
+    margin-left: 50%;
 }
 
 .form-grid2 {
     grid-area: formGrid;
+    margin-top: 15px;
+    margin-left: 20%;
 }
 
 .empty-grid3 {
@@ -42,9 +45,14 @@ td {
 }
 
 .img-container {
-    margin: 15px auto;
-    width: 200px;
-    height: 200px;
+    margin: 20px auto;
+    max-width: 200px;
+    max-height: 200px;
     border-radius: 15px;
     box-shadow: inset 0 0 10px #000000;
+}
+
+.error-div {
+    margin: 0 auto;
+    width: 50%;
 }

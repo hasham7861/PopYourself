@@ -13,6 +13,24 @@ namespace PopYourself {
     public partial class post_ad {
         
         /// <summary>
+        /// itemAdValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator itemAdValidator;
+        
+        /// <summary>
+        /// uploadedImg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image uploadedImg;
+        
+        /// <summary>
         /// FileUpload1 control.
         /// </summary>
         /// <remarks>

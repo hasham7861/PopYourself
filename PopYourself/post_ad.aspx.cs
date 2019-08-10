@@ -25,11 +25,16 @@ namespace PopYourself
 
         protected void postAdbtn_Click(object sender, EventArgs e)
         {
+            string fileName = "";
             if (Page.IsValid)
             {
+                if(FileUpload1.HasFile)
+                {
+                    fileName = FileUpload1.FileName.ToLower();
+                }
 
                 string insertData = "insert into item values (@item_name,@item_category,@item_price," +
-                    "@item_city,@item_phone,@item_desc";
+                    "@item_city,@item_phone,@item_desc,@item_img)";
                 try
                 {
                     connect.Open();
@@ -40,6 +45,7 @@ namespace PopYourself
                     command.Parameters.AddWithValue("@item_city", cityBox.Text);
                     command.Parameters.AddWithValue("@item_phone", pNumBox.Text);
                     command.Parameters.AddWithValue("@item_desc", descBox.Text);
+                    command.Parameters.AddWithValue("@item_img", fileName);
                     command.ExecuteNonQuery();
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "$alert('New ad posted'); window.location = 'INSERT PAGE HERE';", true);
                 }
@@ -74,22 +80,42 @@ namespace PopYourself
                 try
                 {
                     string extension = System.IO.Path.GetExtension(FileUpload1.FileName.ToLower());
-                    string address = Server.MapPath("~\\ad_image_uploads\\") + FileUpload1.FileName.ToLower();
+                    string fileName = FileUpload1.FileName.ToLower();
 
                     if (extension == ".jpg" || extension == ".png" || extension == ".gif")
                     {
-                        FileUpload1.PostedFile.SaveAs(address);
-                        statusLbl.Text = address;
+                        FileUpload1.PostedFile.SaveAs(Server.MapPath("~\\ad_image_uploads\\") + fileName);
+                        uploadedImg.ImageUrl = "/ad_image_uploads/" + fileName;
+                    }
+                    else if(extension == "^[a-zA-Z0-9_]+$")
+                    {
+                        statusLbl.Text = "Cannot upload file with filename that contains special characters";
                     }
                     else
                     {
-                        statusLbl.Text = "Incorrect file extension. Extenstion is: " + extension;
+                        statusLbl.Text = "Incorrect file extension";
                     }
                 }
                 catch (Exception ex)
                 {
                     Response.Write(ex.Message);
                 }
+            }
+        }
+
+        protected void itemAdValidator_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            if(itemNameBox.Text == "" || categoryDlist.SelectedIndex == 0 || double.Parse(priceBox.Text) < 0 || double.Parse(priceBox.Text) > 150000 || cityBox.Text == "" ||
+                pNumBox.Text == "" || descBox.Text == "" || pNumBox.Text == @"^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$")
+            {
+                itemAdValidator.ErrorMessage = "Please verify form with the following criteria: <br/>" +
+                    " - Name of item must not be empty.<br/>" +
+                    " - Must select a category for item.<br/>" +
+                    " - Price must be between $0.00 and $15000.<br/>" +
+                    " - Must provide the city location of the item.<br/>" +
+                    " - Must provide contact information(valid) for buyer.<br/>" +
+                    " - Must provide a brief description about the item.<br/>";
+                args.IsValid = false;
             }
         }
     }
