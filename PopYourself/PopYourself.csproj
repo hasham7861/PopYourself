@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Browse.aspx" />
+    <Content Include="Content\cyrusStyleSheet.css" />
     <Content Include="Content\Default.css" />
     <Content Include="MyAds.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -126,6 +127,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="post_ad.aspx" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Register.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -174,6 +176,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Handler\AccountDatabaseUtil.cs" />
     <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\Item.cs" />
     <Compile Include="MyAds.aspx.cs">
       <DependentUpon>MyAds.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -190,6 +193,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="post_ad.aspx.cs">
+      <DependentUpon>post_ad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="post_ad.aspx.designer.cs">
+      <DependentUpon>post_ad.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.aspx.cs">
@@ -222,6 +232,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ad_image_uploads\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

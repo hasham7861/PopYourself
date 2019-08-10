@@ -44,7 +44,6 @@
                 <br/>
                 </div>
                     </div>
-                
                 <div class="form-row">
                     <div style="padding-left:0" class="form-group col-md-4">
                         <label for="lbl_city">City</label>

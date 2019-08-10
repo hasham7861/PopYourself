@@ -16,9 +16,9 @@ namespace Hasham_991498453_Assignment_3
         {
             if (cnn == null)
             {
-                connectionString = @"Data Source=RB-PC\\SQLEXPRESS;" +
+                connectionString = @"Data Source=DESKTOP-QQS5JKR\\SQLEXPRESSWEBAPP;" +
                                    "" +
-                                   "Initial Catalog=master;" +
+                                   "Initial Catalog=pop_cul_db;" +
                                    "Integrated Security=SSPI;Persist Security Info=false";
                 cnn = new SqlConnection(connectionString);
             }
@@ -27,7 +27,7 @@ namespace Hasham_991498453_Assignment_3
                 return;
             else
             {
-                cnn.Open();
+                cnn.Close();
             }
 
         }

@@ -41,7 +41,7 @@ namespace PopYourself
                     command = new SqlCommand(insertData, connect);
                     command.Parameters.AddWithValue("@item_name", itemNameBox.Text);
                     command.Parameters.AddWithValue("@item_category", categoryDlist.Text);
-                    command.Parameters.AddWithValue("@item_price", priceBox.Text);
+                    command.Parameters.AddWithValue("@item_price", decimal.Parse(priceBox.Text));
                     command.Parameters.AddWithValue("@item_city", cityBox.Text);
                     command.Parameters.AddWithValue("@item_phone", pNumBox.Text);
                     command.Parameters.AddWithValue("@item_desc", descBox.Text);
@@ -105,7 +105,7 @@ namespace PopYourself
 
         protected void itemAdValidator_ServerValidate(object source, ServerValidateEventArgs args)
         {
-            if(itemNameBox.Text == "" || categoryDlist.SelectedIndex == 0 || double.Parse(priceBox.Text) < 0 || double.Parse(priceBox.Text) > 150000 || cityBox.Text == "" ||
+            if (itemNameBox.Text == "" || categoryDlist.SelectedIndex == 0 || double.Parse(priceBox.Text) < 0 || double.Parse(priceBox.Text) > 150000 || cityBox.Text == "" ||
                 pNumBox.Text == "" || descBox.Text == "" || pNumBox.Text == @"^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$")
             {
                 itemAdValidator.ErrorMessage = "Please verify form with the following criteria: <br/>" +
