@@ -1,0 +1,30 @@
+﻿body{
+    color: #6A84FF;
+}
+.container {
+    z-index: 1;
+}
+
+#backdrop {
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    right: 0;
+    height: 500px;
+    width: 500px;
+    background: #6A84FF;
+    clip-path: polygon(100% 54%, 100% 0%, 100% 100%, 0% 100%);
+
+}
+
+
+#backdrop2 {
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    right: 0;
+    height: 500px;
+    width: 500px;
+    background: #9DAEFF;
+    clip-path: polygon(100% 80%, 100% 71%, 100% 100%, 0 100%);
+}
