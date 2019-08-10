@@ -176,7 +176,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Handler\AccountDatabaseUtil.cs" />
     <Compile Include="Model\Account.cs" />
-    <Compile Include="Model\Item.cs" />
     <Compile Include="MyAds.aspx.cs">
       <DependentUpon>MyAds.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
