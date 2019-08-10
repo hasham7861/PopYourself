@@ -4,9 +4,11 @@ ID: 991146084
 DATE: July 11, 2019
 --%>
 
-<%@ Page Title="" Language="C#" AutoEventWireup="true" CodeBehind="post_ad.aspx.cs" Inherits="PopYourself.post_ad" %>
+<%@ Page Title="" Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="post_ad.aspx.cs" Inherits="PopYourself.post_ad" %>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+  
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
     <title>Pop Yourself</title>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
@@ -100,3 +102,4 @@ DATE: July 11, 2019
     </form>
 </body>
 </html>
+</asp:Content>
