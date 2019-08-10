@@ -12,6 +12,7 @@ namespace PopYourself
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
            
         }
 
@@ -20,11 +21,11 @@ namespace PopYourself
             if (loginEmail.Text == "" && loginPassword.Text == "") return;
 
 
-            bool validLogin = AccountDatabaseUtil.ValidateLogin(loginEmail.Text,loginPassword.Text);
+            String accountId = AccountDatabaseUtil.ValidateLogin(loginEmail.Text,loginPassword.Text);
 
-            if (validLogin)
+            if (accountId != "")
             {
-                Session["email"] = loginEmail.Text;
+                Session["account_id"] = accountId;
                 Response.Redirect("Browse.aspx");
             }
             else

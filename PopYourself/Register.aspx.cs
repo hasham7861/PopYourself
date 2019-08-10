@@ -50,8 +50,7 @@ namespace PopYourself
             }
             else
             {
-                Session["email"] = txt_email.Text;
-                Response.Redirect("Browse.aspx");
+                Response.Redirect("Default.aspx");
             }
         }
     }
