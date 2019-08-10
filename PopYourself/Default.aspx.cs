@@ -18,7 +18,7 @@ namespace PopYourself
 
         protected void btn_login_Click(object sender, EventArgs e)
         {
-            if (loginEmail.Text == "" && loginPassword.Text == "") return;
+            if (loginEmail.Text == "" || loginPassword.Text == "") return;
 
 
             String accountId = AccountDatabaseUtil.ValidateLogin(loginEmail.Text,loginPassword.Text);
