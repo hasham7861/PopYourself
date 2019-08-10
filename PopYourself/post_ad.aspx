@@ -1,14 +1,6 @@
-﻿<%--
-AUTHOR: Cyrus Alatraca
-ID: 991146084
-DATE: July 11, 2019
---%>
-
-<%@ Page Title="" Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="post_ad.aspx.cs" Inherits="PopYourself.post_ad" %>
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-  
-
-<html>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="post_ad.aspx.cs" Inherits="PopYourself.post_ad" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <html>
 <head>
     <title>Pop Yourself</title>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />

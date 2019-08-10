@@ -28,7 +28,7 @@ namespace PopYourself
             string fileName = "";
             if (Page.IsValid)
             {
-                if(FileUpload1.HasFile)
+                if (FileUpload1.HasFile)
                 {
                     fileName = FileUpload1.FileName.ToLower();
                 }
@@ -87,7 +87,7 @@ namespace PopYourself
                         FileUpload1.PostedFile.SaveAs(Server.MapPath("~\\ad_image_uploads\\") + fileName);
                         uploadedImg.ImageUrl = "/ad_image_uploads/" + fileName;
                     }
-                    else if(extension == "^[a-zA-Z0-9_]+$")
+                    else if (extension == "^[a-zA-Z0-9_]+$")
                     {
                         statusLbl.Text = "Cannot upload file with filename that contains special characters";
                     }
