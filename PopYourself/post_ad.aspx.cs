@@ -16,10 +16,6 @@ namespace PopYourself
 {
     public partial class post_ad : System.Web.UI.Page
     {
-        private string connectionString = null;
-        private SqlConnection connect;
-        private SqlCommand command;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -27,44 +23,56 @@ namespace PopYourself
 
         protected void postAdbtn_Click(object sender, EventArgs e)
         {
-            string fileName = "";
-            if (FileUpload1.HasFile)
+            if(Page.IsValid)
             {
-                try
+                string fileName = "";
+                if (FileUpload1.HasFile)
                 {
-                    fileName = FileUpload1.FileName.ToLower();
-                    FileUpload1.PostedFile.SaveAs(Server.MapPath("~\\ad_image_uploads\\") + fileName);
+                    try
+                    {
+                        fileName = FileUpload1.FileName.ToLower();
+                        FileUpload1.PostedFile.SaveAs(Server.MapPath("~\\ad_image_uploads\\") + fileName);
+                    }
+                    catch (Exception ex)
+                    {
+                        Response.Write(ex.Message);
+                    }
                 }
-                catch (Exception ex)
+
+                Item item = new Item()
                 {
-                    Response.Write(ex.Message);
-                }
+                    Name = itemNameBox.Text,
+                    Category = categoryDlist.Text,
+                    Description = descBox.Text,
+                    Image = fileName,
+                    City = cityBox.Text,
+                    Phone = pNumBox.Text,
+                    Price = decimal.Parse(priceBox.Text)
+                };
+
+                bool validItem = PostAdDBUtil.CreateItem(item);
+
+                if (!validItem)
+                    Response.Write($"Ooops, something went wrong! {(string)Session["account_id"]}");
+                else
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('New ad posted!');window.location = 'MyAds.aspx", true);
             }
-
-            Item item = new Item()
+            else
             {
-                Name = itemNameBox.Text,
-                Category = categoryDlist.Text,
-                Description = descBox.Text,
-                Image = fileName,
-                City = cityBox.Text,
-                Phone = pNumBox.Text,
-                Price = decimal.Parse(priceBox.Text)
-            };
-
-            bool validItem = PostAdDBUtil.CreateItem(item);
-
+                Response.Write("bruh!");
+            }
+            
         }
 
         protected void cancelBtn_Click(object sender, EventArgs e)
         {
             // -- remove uploaded images if pressed cancel
-            Response.Redirect("INSERT PAGE HERE");
+            Response.Redirect("Browse.aspx");
         }
 
         protected void itemAdValidator_ServerValidate(object source, ServerValidateEventArgs args)
         {
-            if (itemNameBox.Text == "" || categoryDlist.SelectedIndex == 0 || double.Parse(priceBox.Text) < 0 || double.Parse(priceBox.Text) > 150000 || cityBox.Text == "" ||
+            if (itemNameBox.Text == "" || categoryDlist.SelectedIndex == 0 || decimal.Parse(priceBox.Text) < 0 || decimal.Parse(priceBox.Text) > 150000 || cityBox.Text == "" ||
                 pNumBox.Text == "" || descBox.Text == "" || pNumBox.Text == @"^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$")
             {
                 itemAdValidator.ErrorMessage = "Please verify form with the following criteria: <br/>" +
@@ -77,22 +85,25 @@ namespace PopYourself
                 args.IsValid = false;
             }
 
-            string extension = System.IO.Path.GetExtension(FileUpload1.FileName.ToLower());
-
-            if (extension == ".jpg" || extension == ".png" || extension == ".gif")
+            if(FileUpload1.HasFile)
             {
-                args.IsValid = true;
+                string extension = System.IO.Path.GetExtension(FileUpload1.FileName.ToLower());
+                if (extension == ".jpg" || extension == ".png" || extension == ".gif")
+                {
+                    args.IsValid = true;
+                }
+                else if (extension == "^[a-zA-Z0-9_]+$")
+                {
+                    statusLbl.Text = "Cannot upload file with filename that contains special characters";
+                    args.IsValid = false;
+                }
+                else
+                {
+                    statusLbl.Text = "Incorrect file extension";
+                    args.IsValid = false;
+                }
             }
-            else if (extension == "^[a-zA-Z0-9_]+$")
-            {
-                statusLbl.Text = "Cannot upload file with filename that contains special characters";
-                args.IsValid = false;
-            }
-            else
-            {
-                statusLbl.Text = "Incorrect file extension";
-                args.IsValid = false;
-            }
+            
         }
     }
 }

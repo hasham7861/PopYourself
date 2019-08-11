@@ -73,7 +73,8 @@ namespace PopYourself.Handler
             }
             catch (SqlException ex)
             {
-                Debug.WriteLine("Error in SQL!" + ex.Message);
+                System.Diagnostics.Debug.WriteLine(accountId);
+                System.Diagnostics.Debug.WriteLine("Error in SQL!" + ex.Message);
             }
             finally
             {
@@ -109,12 +110,12 @@ namespace PopYourself.Handler
                 }
                 else
                 {
-                    Debug.WriteLine("No matching account_id");
+                    System.Diagnostics.Debug.WriteLine("No matching account_id");
                 }
             }
             catch (SqlException ex)
             {
-                Debug.WriteLine("Error in SQL! " + ex.Message);
+                System.Diagnostics.Debug.WriteLine("Error in SQL! " + ex.Message);
             }
             finally
             {
@@ -146,7 +147,7 @@ namespace PopYourself.Handler
             }
             catch (SqlException ex)
             {
-                Debug.WriteLine("Error in SQL!" + ex.Message);
+                System.Diagnostics.Debug.WriteLine("Error in SQL!" + ex.Message);
             }
             finally
             {

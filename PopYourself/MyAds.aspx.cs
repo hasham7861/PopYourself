@@ -29,5 +29,10 @@ namespace PopYourself
             userAdGrid.DataSource = dtbl;
             DataBind();
         }
+
+        protected void postNewAd_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("post_ad.aspx");
+        }
     }
 }
