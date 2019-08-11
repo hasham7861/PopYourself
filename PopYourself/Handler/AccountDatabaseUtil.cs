@@ -87,9 +87,9 @@ namespace Hasham_991498453_Assignment_3
             return validRegister;
         }
 
-        public static bool ValidateLogin(string custEmail, string custPassword)
+        public static string ValidateLogin(string custEmail, string custPassword)
         {
-            bool validLogin = false;
+            string accountId = "";
 
             try
             {
@@ -100,11 +100,17 @@ namespace Hasham_991498453_Assignment_3
                 command.Parameters.AddWithValue("@email", custEmail);
                 command.Parameters.AddWithValue("@password", custPassword);
                 SqlDataReader reader = command.ExecuteReader();
+
                 if (reader.Read())
                 {
-                    validLogin = true;
+                    accountId = reader["account_id"].ToString();
+                }
+                else
+                {
+                    accountId = "";
                 }
             }
+
             catch (SqlException ex)
             {
                 Debug.WriteLine("Can't find customer: " + ex.Message);
@@ -114,7 +120,7 @@ namespace Hasham_991498453_Assignment_3
                 CloseConnection();
             }
 
-            return validLogin;
+            return accountId;
 
         }
 

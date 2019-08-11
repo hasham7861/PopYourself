@@ -8,7 +8,7 @@
 <body>
    
 <form runat="server">
-        <div style="width: 700px; margin-top:80px; padding: 20px;" class="container">
+        <div style="width: 700px; margin-top:30px; padding: 20px;" class="container">
             <header style="text-align: center;">
                 <h1 style="font-size: 70px;">Register</h1>
             </header>
