@@ -20,6 +20,9 @@ DATE: July 11, 2019
             }
         }
         </script>
+    <div class="post-ad-header">
+        <h1>Create New Ad</h1>
+    </div>
     <div class="error-div">
         <asp:CustomValidator ID="itemAdValidator" runat="server" ErrorMessage="" OnServerValidate="itemAdValidator_ServerValidate"></asp:CustomValidator>
     </div>

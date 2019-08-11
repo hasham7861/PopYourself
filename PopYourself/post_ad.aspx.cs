@@ -28,23 +28,55 @@ namespace PopYourself
 
         protected void postAdbtn_Click(object sender, EventArgs e)
         {
-            string fileName = "";
             if (Page.IsValid)
             {
+                connect = new SqlConnection(connectionString);
+                string fileName = "";
                 if (FileUpload1.HasFile)
                 {
                     try
                     {
                         fileName = FileUpload1.FileName.ToLower();
-
                         FileUpload1.PostedFile.SaveAs(Server.MapPath("~\\ad_image_uploads\\") + fileName);
-                        uploadedImg.ImageUrl = "/ad_image_uploads/" + fileName;
-
                     }
                     catch (Exception ex)
                     {
                         Response.Write(ex.Message);
                     }
+                }
+
+                string account_idStr = "";
+                string accountIDQuery = $"select account_id from account where username = '{(string)Session["username"]}'";
+
+                try
+                {
+                    connect.Open();
+                    SqlDataAdapter sda = new SqlDataAdapter(accountIDQuery, connect);
+                    DataTable dtbl = new DataTable();
+                    sda.Fill(dtbl);
+                    if (dtbl.Rows.Count == 1)
+                    {
+                        SqlCommand command = new SqlCommand(accountIDQuery, connect);
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            account_idStr = reader["account_id"].ToString();
+                        }
+                    }
+                    else
+                    {
+                        Response.Write("No matching account_id");
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    Response.Write("Error in SQL! " + ex.Message);
+                }
+                finally
+                {
+                    if (connect.State == ConnectionState.Open)
+                        connect.Close();
                 }
 
                 string insertData = "insert into item values (@item_name,@item_category,@item_price," +
@@ -61,7 +93,7 @@ namespace PopYourself
                     command.Parameters.AddWithValue("@item_desc", descBox.Text);
                     command.Parameters.AddWithValue("@item_img", fileName);
                     command.ExecuteNonQuery();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "$alert('New ad posted'); window.location = 'INSERT PAGE HERE';", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "$alert('New ad posted'); window.location = 'MyAds.aspx';", true);
                 }
                 catch (SqlException ex)
                 {
@@ -70,9 +102,7 @@ namespace PopYourself
                 finally
                 {
                     if (connect.State == ConnectionState.Open)
-                    {
                         connect.Close();
-                    }
                 }
             }
             else
