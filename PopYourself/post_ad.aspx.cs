@@ -1,6 +1,7 @@
 ﻿//AUTHOR: Cyrus Alatraca
 //ID: 991146084
 //DATE: July 17, 2019
+using PopYourself.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,30 +21,40 @@ namespace PopYourself
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            connectionString = "Data Source=DESKTOP-QQS5JKR\\SQLEXPRESSWEBAPP;" +
-                               "" + "Initial Catalog=pop_cul_db;" +
-                               "Integrated Security=SSPI;Persist Security Info=false";
-            connect = new SqlConnection(connectionString);
+            
         }
 
         protected void postAdbtn_Click(object sender, EventArgs e)
         {
+            string fileName = "";
+            if (FileUpload1.HasFile)
+            {
+                try
+                {
+                    fileName = FileUpload1.FileName.ToLower();
+                    FileUpload1.PostedFile.SaveAs(Server.MapPath("~\\ad_image_uploads\\") + fileName);
+                }
+                catch (Exception ex)
+                {
+                    Response.Write(ex.Message);
+                }
+            }
+
+            Item item = new Item()
+            {
+                Name = itemNameBox.Text,
+                Category = categoryDlist.Text,
+                Description = descBox.Text,
+                Image = fileName,
+                City = cityBox.Text,
+                Phone = pNumBox.Text,
+                Price = decimal.Parse(priceBox.Text)
+            };
+
             if (Page.IsValid)
             {
                 connect = new SqlConnection(connectionString);
-                string fileName = "";
-                if (FileUpload1.HasFile)
-                {
-                    try
-                    {
-                        fileName = FileUpload1.FileName.ToLower();
-                        FileUpload1.PostedFile.SaveAs(Server.MapPath("~\\ad_image_uploads\\") + fileName);
-                    }
-                    catch (Exception ex)
-                    {
-                        Response.Write(ex.Message);
-                    }
-                }
+                
 
                 string accountIdStr = "";
                 string accountIDQuery = $"select account_id from account where username = '{(string)Session["username"]}'"; // might not be required -- session created for account_id
