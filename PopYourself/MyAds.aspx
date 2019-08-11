@@ -1,7 +1,7 @@
 ﻿<%--
 AUTHOR: Cyrus Alatraca
 ID: 991146084
-DATE: July 11, 2019
+DATE: August 10, 2019
 --%>
 <%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MyAds.aspx.cs" Inherits="PopYourself.Contact" %>
 
