@@ -12,14 +12,10 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:BundleReference runat="server" Path="~/Content/css" />
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="Content/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <style>
-        .imageStyle {
-            padding: 10px;
-        }
-    </style>
+    <link href="Content/cyrusStyleSheet.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
     <form runat="server">
@@ -47,9 +43,9 @@
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span style="background-color: white" class="icon-bar"></span>
-                        <span style="background-color: white" class="icon-bar"></span>
-                        <span style="background-color: white" class="icon-bar"></span>
+                        <span style="background-color:white"  class="icon-bar"></span>
+                        <span style="background-color:white" class="icon-bar"></span>
+                        <span style="background-color:white"  class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" runat="server" href="~/">Pop Yourself</a>
                 </div>
@@ -57,20 +53,14 @@
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Login</a></li>
                         <li><a runat="server" href="~/Browse">Browse</a></li>
-                        <li><a runat="server" href="~/MyAds">My Ads</a></li>
+                        <li><a runat="server" href="MyAds.aspx">My Ads</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="container body-content">
-            <asp:UpdatePanel runat="server">
-                <ContentTemplate>
-                    <asp:ContentPlaceHolder ID="SearchContent" runat="server">
-                    </asp:ContentPlaceHolder>
-                    <asp:ContentPlaceHolder ID="ItemContent" runat="server">
-                    </asp:ContentPlaceHolder>
-                </ContentTemplate>
-            </asp:UpdatePanel>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
             <hr />
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> Pop Yourself</p>

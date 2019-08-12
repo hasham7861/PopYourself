@@ -8,7 +8,7 @@
 <body>
    
 <form runat="server">
-        <div style="width: 700px; margin-top:80px; padding: 20px;" class="container">
+        <div style="width: 700px; margin-top:30px; padding: 20px;" class="container">
             <header style="text-align: center;">
                 <h1 style="font-size: 70px;">Register</h1>
             </header>
@@ -18,38 +18,37 @@
                 
                 <label for="lbl_email">Email</label>
                 <asp:TextBox type="email" runat="server" class="form-control" id="txt_email"  aria-describedby="emailHelp" placeholder="Enter email"> </asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txt_email" EnableClientScript="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Enter email!</asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" Display ="Dynamic" ControlToValidate="txt_email" EnableClientScript="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Enter email!</asp:RequiredFieldValidator>
                 <br/>
 
                 <label for="lbl_username">Username</label>
                 <asp:TextBox runat="server" class="form-control" id="txt_username" placeholder="Enter username"> </asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txt_username" EnableClientScript="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Enter username!</asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Display ="Dynamic" ControlToValidate="txt_username" EnableClientScript="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Enter username!</asp:RequiredFieldValidator>
                 <br/>
                 
                 <label for="lbl_password">Password</label>
                 <asp:TextBox runat="server" class="form-control" id="txt_password" placeholder="Enter password"> </asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txt_password" EnableClientScript="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Enter password!</asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" Display ="Dynamic" ControlToValidate="txt_password" EnableClientScript="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Enter password!</asp:RequiredFieldValidator>
                 <br/>
                 
                 <div class="form-row">
                     <div style="padding-left:0" class="form-group col-md-6">
                 <label for="lbl_firstname">First Name</label>
                 <asp:TextBox runat="server" class="form-control" id="txt_firstname" placeholder="Enter First Name"> </asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txt_firstname" EnableClientScript="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Enter first name!</asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" Display ="Dynamic" ControlToValidate="txt_firstname" EnableClientScript="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Enter first name!</asp:RequiredFieldValidator>
                 <br/></div>
                     <div   style="padding-left: 0; padding-right: 0;"class="form-group col-md-6">
                 <label for="lbl_lastname">Last Name</label>
                 <asp:TextBox runat="server" class="form-control" id="txt_lastname"  placeholder="Enter Last Nname"> </asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txt_lastname" EnableClientScript="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Enter last Name!</asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" Display ="Dynamic" runat="server" ControlToValidate="txt_lastname" EnableClientScript="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Enter last Name!</asp:RequiredFieldValidator>
                 <br/>
                 </div>
                     </div>
-                
                 <div class="form-row">
                     <div style="padding-left:0" class="form-group col-md-4">
                         <label for="lbl_city">City</label>
                         <asp:TextBox runat="server" class="form-control" id="txt_city" placeholder="Enter city"> </asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txt_city" EnableClientScript="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Enter city!</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator Display ="Dynamic" ID="RequiredFieldValidator5" runat="server" ControlToValidate="txt_city" EnableClientScript="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Enter city!</asp:RequiredFieldValidator>
                         <br/>
                         </div>
                     <div style="padding-left:0" class="form-group col-md-4">
@@ -70,8 +69,9 @@
                     </div>
                     <div style="padding-left: 0; padding-right:0" class="form-group col-md-4">
                         <label for="lbl_postalcode">Postal Code</label>
-                        <asp:TextBox runat="server" class="form-control" id="txt_postalcode"  placeholder="Enter postalcode"> </asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txt_postalcode" EnableClientScript="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Enter postalcode!</asp:RequiredFieldValidator>
+                        <asp:TextBox runat="server" class="form-control" id="txt_postalcode"  placeholder="Enter postalcode" MaxLength="6" OnTextChanged="txt_postalcode_TextChanged"></asp:TextBox>
+                        <asp:RequiredFieldValidator style="color: red;" Display ="Dynamic" ID="RequiredFieldValidator10" runat="server" ErrorMessage="RequiredFieldValidator" ControlToValidate="txt_postalcode" EnableClientScript="False">Enter Postal Code!</asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txt_postalcode" EnableClientScript="False" ErrorMessage="RegularExpressionValidator" ForeColor="Red" ValidationExpression="^[A-VXY][0-9][A-Z]●?[0-9][A-Z][0-9]$">Postal Code should be 6 characters!</asp:RegularExpressionValidator>
                     </div>
                     </div>
                     
@@ -79,7 +79,7 @@
                 <div class="form-row">
                     <label for="lbl_phone">Phone</label>
                         <asp:TextBox runat="server" class="form-control" id="txt_phone"  placeholder="Enter phone"> </asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txt_phone" EnableClientScript="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Enter phone!</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator Display ="Dynamic" ID="RequiredFieldValidator8" runat="server" ControlToValidate="txt_phone" EnableClientScript="False" ErrorMessage="RequiredFieldValidator" ForeColor="Red">Enter phone!</asp:RequiredFieldValidator>
                         <br/></div>
 
                 <div class="form-row">

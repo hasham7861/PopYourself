@@ -50,9 +50,13 @@ namespace PopYourself
             }
             else
             {
-                Session["email"] = txt_email.Text;
-                Response.Redirect("Browse.aspx");
+                Response.Redirect("Default.aspx");
             }
+        }
+
+        protected void txt_postalcode_TextChanged(object sender, EventArgs e)
+        {
+            txt_postalcode.Text = txt_postalcode.Text.ToUpper();
         }
     }
 }
