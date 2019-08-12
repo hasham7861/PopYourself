@@ -108,6 +108,7 @@
   <ItemGroup>
     <Content Include="Browse.aspx" />
     <Content Include="Content\Default.css" />
+    <Content Include="Images\OneCard.jpg" />
     <Content Include="MyAds.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -173,6 +174,7 @@
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Handler\AccountDatabaseUtil.cs" />
+    <Compile Include="Handler\BrowsePageDBUtil.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="MyAds.aspx.cs">
       <DependentUpon>MyAds.aspx</DependentUpon>
