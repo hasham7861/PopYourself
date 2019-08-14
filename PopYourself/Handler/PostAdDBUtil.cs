@@ -18,7 +18,7 @@ namespace PopYourself.Handler
         static string connectionString = null;
         static SqlConnection cnn;
         private static SqlCommand command;
-        static string accountId = (string)System.Web.HttpContext.Current.Session["account_id"];
+        static readonly string accountId = (string)System.Web.HttpContext.Current.Session["account_id"];
 
         private static void OpenConnection()
         {
@@ -52,8 +52,8 @@ namespace PopYourself.Handler
         {
             bool validItem = false;
             
-            string insertItem = "insert into item values (@account_id,@item_name,@item_category,@item_price," +
-                    "@item_city,@item_phone,@item_desc,@item_img)";
+            string insertItem = "insert into item values (@account_id,@item_name,@item_category,@item_desc,@item_img," +
+                    "@item_city,@item_phone,@item_price)";
             try
             {
                 OpenConnection();
@@ -68,12 +68,13 @@ namespace PopYourself.Handler
                 command.Parameters.AddWithValue("@item_img", item.Image);
                 int rowsInserted = command.ExecuteNonQuery();
 
-                if (rowsInserted == 1 && AdPost())
+                if (rowsInserted == 1 && AdPost(item))
                     validItem = true;
             }
             catch (SqlException ex)
             {
-                System.Diagnostics.Debug.WriteLine(accountId);
+                
+                System.Diagnostics.Debug.WriteLine(item.Price.GetType());
                 System.Diagnostics.Debug.WriteLine("Error in SQL!" + ex.Message);
             }
             finally
@@ -84,12 +85,11 @@ namespace PopYourself.Handler
             return validItem;
         }
 
-        public static void ItemDetails (out string itemId, out string itemName)
+        public static void ItemDetails (out string itemId, out string itemName, Item item)
         {
             itemId = "";
             itemName = "";
-            string itemIDQuery = $"select item_id, item_name from item where username = '{accountId}'"; 
-
+            string itemIDQuery = $"select item_id, item_name from item where item_name = '{item.Name}'";
             try
             {
                 OpenConnection();
@@ -105,12 +105,11 @@ namespace PopYourself.Handler
                     {
                         itemId = reader["item_id"].ToString();
                         itemName = reader["item_name"].ToString();
-
                     }
                 }
                 else
                 {
-                    System.Diagnostics.Debug.WriteLine("No matching account_id");
+                    System.Diagnostics.Debug.WriteLine("No matching item_name");
                 }
             }
             catch (SqlException ex)
@@ -123,7 +122,7 @@ namespace PopYourself.Handler
             }
         }
 
-        public static bool AdPost()
+        public static bool AdPost(Item item)
         {
             bool validPost = false;
             string itemId;
@@ -131,9 +130,9 @@ namespace PopYourself.Handler
             var currDate = DateTime.Now;
             var expiryDate = currDate.AddDays(10);
 
-            ItemDetails(out itemId, out itemName);
+            ItemDetails(out itemId, out itemName, item);
 
-            string insertPost = "insert into ad_post (@account_id,@item_id,@post_title,@post_date,@post_expiry)";
+            string insertPost = "insert into ad_post values (@account_id,@item_id,@post_title,@post_date,@post_expiry)";
 
             try
             {
@@ -144,6 +143,9 @@ namespace PopYourself.Handler
                 command.Parameters.AddWithValue("@post_title", itemName);
                 command.Parameters.AddWithValue("@post_date", currDate);
                 command.Parameters.AddWithValue("@post_expiry", expiryDate);
+                int rowInserted = command.ExecuteNonQuery();
+                if (rowInserted == 1)
+                    validPost = true;
             }
             catch (SqlException ex)
             {

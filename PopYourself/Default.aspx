@@ -30,7 +30,6 @@
                     <asp:Button style="background-color: #6A84FF; color: white; padding: 5px 50px;" ID="btn_login" class="btn" runat="server" Text="Login" OnClick="btn_login_Click" />
                     <br />
                     <br />
-                    
                     <a href="Register.aspx" >Sign Up?</a>
                 </div>
             </div>
