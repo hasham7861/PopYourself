@@ -24,7 +24,7 @@ namespace PopYourself.Handler
         {
             if (cnn == null)
             {
-                connectionString = "Data Source=DESKTOP-QQS5JKR\\SQLEXPRESSWEBAPP;" +
+                connectionString = "Data Source=RB-PC\\SQLEXPRESS;" +
                                    "" +
                                    "Initial Catalog=pop_cul_db;" +
                                    "Integrated Security=SSPI;Persist Security Info=false";
@@ -52,7 +52,7 @@ namespace PopYourself.Handler
         {
             bool validItem = false;
             
-            string insertItem = "insert into item values (@account_id,@item_name,@item_category,@item_price," +
+            string insertItem = "insert into dbo.item values (@account_id,@item_name,@item_category,@item_price," +
                     "@item_city,@item_phone,@item_desc,@item_img)";
             try
             {

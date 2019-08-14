@@ -12,10 +12,11 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="Content/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link href="Content/cyrusStyleSheet.css" rel="stylesheet" type="text/css"/>
+    <link href="Content/cyrusStyleSheet.css" rel="stylesheet" type="text/css" />
+    <link href="Content/robertStyleSheet.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form runat="server">
@@ -43,9 +44,9 @@
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span style="background-color:white"  class="icon-bar"></span>
-                        <span style="background-color:white" class="icon-bar"></span>
-                        <span style="background-color:white"  class="icon-bar"></span>
+                        <span style="background-color: white" class="icon-bar"></span>
+                        <span style="background-color: white" class="icon-bar"></span>
+                        <span style="background-color: white" class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" runat="server" href="~/">Pop Yourself</a>
                 </div>
@@ -59,8 +60,14 @@
             </div>
         </div>
         <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
+            <asp:UpdatePanel runat="server">
+                <ContentTemplate>
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                    <asp:ContentPlaceHolder ID="SearchContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                </ContentTemplate>
+            </asp:UpdatePanel>
             <hr />
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> Pop Yourself</p>

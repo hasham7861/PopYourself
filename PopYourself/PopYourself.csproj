@@ -110,6 +110,7 @@
     <Content Include="Browse.aspx" />
     <Content Include="Content\cyrusStyleSheet.css" />
     <Content Include="Content\Default.css" />
+    <Content Include="Content\robertStyleSheet.css" />
     <Content Include="MyAds.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -176,6 +177,7 @@
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Handler\AccountDatabaseUtil.cs" />
+    <Compile Include="Handler\BrowsePageDBUtil.cs" />
     <Compile Include="Handler\PostAdDBUtil.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Item.cs" />

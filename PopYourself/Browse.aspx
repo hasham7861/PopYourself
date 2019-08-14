@@ -5,10 +5,10 @@
 
 <%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Browse.aspx.cs" Inherits="PopYourself.About" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="SearchContent" runat="server">
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <br />
     <br />
-    <div style="text-align:center">
+    <div style="text-align: center">
 
         <asp:TextBox ID="txtItemSearch" runat="server" class="form-control" Style="display: inline;" placeholder="Search for a pop culture item" Width="217px"></asp:TextBox>
         &nbsp;&nbsp;&nbsp;
@@ -34,21 +34,8 @@
     </div>
 
 </asp:Content>
-<asp:Content ID="Content1" ContentPlaceHolderID="ItemContent" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="SearchContent" runat="server">
     <br />
-    <br />
-    <div style="text-align:center" class="style">
-        <table align="center">
-            <tr>
-                <td><asp:Image ID="item1" runat="server" class="imageStyle" Width="130px" Height="150px"/></td>
-                <td><asp:Image ID="item2" runat="server" class="imageStyle" Width="130px" Height="150px"/></td>
-                <td><asp:Image ID="item3" runat="server" class="imageStyle" Width="130px" Height="150px"/></td>
-            </tr>
-            <tr>
-                <td><asp:Image ID="item4" runat="server" class="imageStyle" Width="130px" Height="150px"/></td>
-                <td><asp:Image ID="item5" runat="server" class="imageStyle" Width="130px" Height="150px"/></td>
-                <td><asp:Image ID="item6" runat="server" class="imageStyle" Width="130px" Height="150px"/></td>
-            </tr>
-        </table>
+    <div style="text-align: center" class="style" id="imageContainer" runat="server">
     </div>
 </asp:Content>

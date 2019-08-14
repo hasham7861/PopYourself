@@ -18,7 +18,7 @@ namespace PopYourself
         private SqlConnection connect;
         protected void Page_Load(object sender, EventArgs e)
         {
-            connectionString = "Data Source=DESKTOP-QQS5JKR\\SQLEXPRESSWEBAPP;" +
+            connectionString = "Data Source=RB-PC\\SQLEXPRESS;" +
                                "" + "Initial Catalog=pop_cul_db;" +
                                "Integrated Security=SSPI;Persist Security Info=false";
             connect = new SqlConnection(connectionString);

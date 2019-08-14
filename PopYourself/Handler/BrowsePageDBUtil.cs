@@ -1,10 +1,13 @@
-﻿using System;
+﻿using PopYourself.Model;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
+//Author: Robert Sarmiento
+//ID: 991471234
 namespace PopYourself.Handler
 {
     public class BrowsePageDBUtil
@@ -12,14 +15,17 @@ namespace PopYourself.Handler
         string connectionString = null;
         SqlConnection sqlConnection;
         SqlCommand sqlCommand;
+        List<Item> itemList = new List<Item>();
+        public List<Item> GetItemList { get { return itemList; } set { } }
+        public string Message { get; set; }
 
         private void OpenConnection()
         {
             if (sqlConnection == null)
             {
-                connectionString = @"Data Source=RB-PC\\SQLEXPRESS;" +
+                connectionString = "Data Source=RB-PC\\SQLEXPRESS;" +
                                     "" +
-                                    "Initial Catalog=master;" +
+                                    "Initial Catalog=pop_cul_db;" +
                                     "Integrated Security=SSPI;Persist Security Info=false";
 
                 sqlConnection = new SqlConnection(connectionString);
@@ -37,49 +43,54 @@ namespace PopYourself.Handler
             }
         }
 
-        private void RetrieveSearchItems(string searchKey)
+        public void GetDBItem(string searchKey)
         {
-            //try
-            //{
-            //    string query = $"SELECT * FROM dbo.customers WHERE cust_username = '{(string)Session["username"]}'";
+            Message = "";
 
-            //    Connect.Open();
-            //    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, Connect);
-            //    DataTable dataTable = new DataTable();
-            //    sqlDataAdapter.Fill(dataTable);
+            try
+            {
+                string query = $"SELECT * FROM dbo.item WHERE item_name LIKE '%{searchKey}%'";
 
-            //    if (dataTable.Rows.Count == 1)
-            //    {
-            //        SqlCommand command = new SqlCommand(query, Connect);
-            //        SqlDataReader reader = command.ExecuteReader();
-            //        string customerName = "";
+                OpenConnection();
 
-            //        while (reader.Read())
-            //        {
-            //            customerName = reader["cust_name"].ToString();
-            //            lblGetName.Text = reader["cust_name"].ToString();
-            //            lblGetAddress.Text = reader["cust_address"].ToString();
-            //            lblGetPostal.Text = reader["cust_postal"].ToString();
-            //            lblGetPhone.Text = reader["cust_pnumber"].ToString();
-            //            lblGetEmail.Text = reader["cust_email"].ToString();
-            //            lblGetUsername.Text = reader["cust_username"].ToString();
-            //        }
-            //        lblWelcome.Text = $"Welcome, {customerName} to profile page!";
-            //    }
-            //    else
-            //    {
-            //        Response.Write("<h3 style='text-align:center;'>Error: Returned rows not equal to one</h3>");
-            //    }
-            //}
-            //catch (Exception error)
-            //{
-            //    Response.Write($"<h3 style='text-align:center;'>Error: {error.Message}</h3>");
-            //}
-            //finally
-            //{
-            //    if (Connect.State == ConnectionState.Open)
-            //        Connect.Close();
-            //}
-        } 
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
+                DataTable dataTable = new DataTable();
+                sqlDataAdapter.Fill(dataTable);
+
+                if (dataTable.Rows.Count >= 1)
+                {
+                    sqlCommand = new SqlCommand(query, sqlConnection);
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Item item = new Item
+                        {
+                            Name = reader["item_name"].ToString(),
+                            Category = reader["item_category"].ToString(),
+                            Description = reader["item_desc"].ToString(),
+                            Image = reader["item_img"].ToString(),
+                            City = reader["item_city"].ToString(),
+                            Phone = reader["item_phone"].ToString(),
+                            Price = decimal.Parse(reader["item_price"].ToString())
+                        };
+                        itemList.Add(item);
+                    }
+                }
+                else
+                {
+                    Message = "No matching items";
+                }
+            }
+            catch (Exception error)
+            {
+                Message = error.Message;
+            }
+            finally
+            {
+                if (sqlConnection.State == ConnectionState.Open)
+                    sqlConnection.Close();
+            }
+        }
     }
 }
