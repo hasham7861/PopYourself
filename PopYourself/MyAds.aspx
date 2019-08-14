@@ -12,6 +12,7 @@ DATE: August 10, 2019
     <div class="post-button-div">
         <asp:Button ID="postNewAd" runat="server" Text="Post New Ad" OnClick="postNewAd_Click" />
     </div>
+    <br />
     <div class="grid-view-div">
         <asp:GridView ID="userAdGrid" runat="server" AutoGenerateColumns="false">
             <Columns>
