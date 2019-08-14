@@ -5,3 +5,27 @@
 .imageLabelStyle {
     padding: 10px 10px;
 }
+
+.gridContainer {
+    display: grid;
+    grid-template-areas: "gridImage" "gridInfo" "gridContactSeller" "gridContactSeller";
+    grid-template-columns: 100%;
+}
+
+.gridImage {
+    grid-area: gridImage;
+}
+
+.gridInfo {
+    grid-area: gridInfo;
+}
+
+.gridContactSeller {
+    grid-area: gridContactSeller;
+}
+
+.buttonStyle {
+    background-color: #6A84FF;
+    color: white;
+    padding: 5px 50px;
+}

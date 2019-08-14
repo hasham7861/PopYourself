@@ -111,6 +111,7 @@
     <Content Include="Content\cyrusStyleSheet.css" />
     <Content Include="Content\Default.css" />
     <Content Include="Content\robertStyleSheet.css" />
+    <Content Include="ItemPage.aspx" />
     <Content Include="MyAds.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -160,6 +161,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="SendEmail.aspx" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -179,6 +181,13 @@
     <Compile Include="Handler\AccountDatabaseUtil.cs" />
     <Compile Include="Handler\BrowsePageDBUtil.cs" />
     <Compile Include="Handler\PostAdDBUtil.cs" />
+    <Compile Include="ItemPage.aspx.cs">
+      <DependentUpon>ItemPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ItemPage.aspx.designer.cs">
+      <DependentUpon>ItemPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Item.cs" />
     <Compile Include="MyAds.aspx.cs">
@@ -212,6 +221,13 @@
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SendEmail.aspx.cs">
+      <DependentUpon>SendEmail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SendEmail.aspx.designer.cs">
+      <DependentUpon>SendEmail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

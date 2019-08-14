@@ -99,25 +99,37 @@ namespace PopYourself
 
         public void CreateImageHolder(int i)
         {
-            ImageButton image;
-
-            imageContainer.Controls.Add(image = new ImageButton
+            ImageButton image = new ImageButton
             {
                 ID = $"image{i}",
                 ImageUrl = browsePageDBUtil.GetItemList.ElementAt(i - 1).Image,
                 Height = 150,
                 Width = 130,
-                CssClass = "imageStyle",
-                CausesValidation = false
-            });
-            image.Command += new CommandEventHandler(ImageButton_OnCommand);
-            //image.Command += ImageButton_OnCommand;
+                CssClass = "imageStyle"
+            };
+            image.Click += new ImageClickEventHandler(ImageButton_OnClick);
+            
+            imageContainer.Controls.Add(image);
+
+
+            //imageContainer.Controls.Add(image = new ImageButton
+            //{
+
+            //});
+            //image.Command += new CommandEventHandler(ImageButton_OnCommand);
+            //ImageButton fuck = (ImageButton)FindControl($"image{i}");
+            //fuck.Click += new ImageClickEventHandler(ImageButton_OnCommand);
+            //image.Click += new ImageClickEventHandler(Unnamed1_Click);
         }
 
-        public void ImageButton_OnCommand(object sender, EventArgs e)
+        protected void ImageButton_OnClick(object sender, ImageClickEventArgs e)
         {
-            Response.Write("Nandito bA");
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Hello');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Hello');", true);
+        }
+
+        protected void Unnamed1_Click(object sender, ImageClickEventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Hello');", true);
         }
     }
 }

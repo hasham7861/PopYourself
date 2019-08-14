@@ -37,5 +37,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="SearchContent" runat="server">
     <br />
     <div style="text-align: center" class="style" id="imageContainer" runat="server">
+        <%--<asp:ImageButton ImageUrl="ad_image_uploads/csharpbois.png" runat="server" Width="150px" Height="150px" OnClick="Unnamed1_Click" />--%>
     </div>
 </asp:Content>
