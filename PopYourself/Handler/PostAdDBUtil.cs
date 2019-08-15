@@ -37,7 +37,6 @@ namespace PopYourself.Handler
             {
                 cnn.Open();
             }
-
         }
 
         private static void CloseConnection()
@@ -114,6 +113,7 @@ namespace PopYourself.Handler
             }
             catch (SqlException ex)
             {
+                System.Diagnostics.Debug.WriteLine("Error in ItemDetails function");
                 System.Diagnostics.Debug.WriteLine("Error in SQL! " + ex.Message);
             }
             finally
@@ -149,6 +149,7 @@ namespace PopYourself.Handler
             }
             catch (SqlException ex)
             {
+                System.Diagnostics.Debug.WriteLine("Error in AdPost function");
                 System.Diagnostics.Debug.WriteLine("Error in SQL!" + ex.Message);
             }
             finally
