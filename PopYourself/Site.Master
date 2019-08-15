@@ -16,7 +16,7 @@
     <link href="Content/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="Content/cyrusStyleSheet.css" rel="stylesheet" type="text/css" />
-    <link href="Content/robertStyleSheet.css" rel="stylesheet" type="text/css" />
+    
 </head>
 <body>
     <form runat="server">
@@ -48,7 +48,7 @@
                         <span style="background-color: white" class="icon-bar"></span>
                         <span style="background-color: white" class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Pop Yourself</a>
+                    <a class="navbar-brand" runat="server" href="~/">PY</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">

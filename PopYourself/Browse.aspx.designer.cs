@@ -22,22 +22,13 @@ namespace PopYourself {
         protected global::System.Web.UI.WebControls.TextBox txtItemSearch;
         
         /// <summary>
-        /// ddFilter control.
+        /// btnSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddFilter;
-        
-        /// <summary>
-        /// lblSuggest control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSuggest;
+        protected global::System.Web.UI.WebControls.Button btnSearch;
         
         /// <summary>
         /// lblSearch control.
@@ -49,15 +40,6 @@ namespace PopYourself {
         protected global::System.Web.UI.WebControls.Label lblSearch;
         
         /// <summary>
-        /// btnSearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
-        
-        /// <summary>
         /// searchRequired control.
         /// </summary>
         /// <remarks>
@@ -67,12 +49,12 @@ namespace PopYourself {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator searchRequired;
         
         /// <summary>
-        /// imageContainer control.
+        /// Table1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl imageContainer;
+        protected global::System.Web.UI.HtmlControls.HtmlTable Table1;
     }
 }

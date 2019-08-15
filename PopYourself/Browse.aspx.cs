@@ -1,4 +1,5 @@
 ﻿using PopYourself.Handler;
+using PopYourself.Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 //Author: Robert Sarmiento
@@ -15,27 +17,30 @@ namespace PopYourself
 {
     public partial class About : Page
     {
-
         ContentPlaceHolder cphItemContent;
         BrowsePageDBUtil browsePageDBUtil = new BrowsePageDBUtil();
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //initialize the placeholder to be invisible on page load
             cphItemContent = (ContentPlaceHolder)this.Page.Master.FindControl("SearchContent");
             cphItemContent.Visible = false;
         }
 
+        //Start searching the database when user clicks on the button
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            SearchKeyword();
+            SearchKeyword(); 
             RetrieveSearchItem();
         }
 
+        //display the search keyword
         public void SearchKeyword()
         {
-            lblSearch.Text = txtItemSearch.Text;
+            lblSearch.Text = "Searching for: " + txtItemSearch.Text;
         }
 
+        //retrieve the search results from the database
         public void RetrieveSearchItem()
         {
             string htmlString = "<br>";
@@ -53,52 +58,24 @@ namespace PopYourself
                 }
                 else
                 {
+                    HtmlTableRow row = new HtmlTableRow();
+                    
+
                     int length = browsePageDBUtil.GetItemList.Count;
                     for (int i = 1; i <= length; i++)
                     {
-                        CreateImageHolder(i);
-
-                        if ((i == 1 && length == 1) || (i % 3 != 0 && length == i))
-                        {
-                            ReturnCarriage();
-                            CreateItemLabel(i - 1);
-                        }
-
-                        if (i % 3 == 0)
-                        {
-                            //insert a br after every 3 images.
-                            ReturnCarriage();
-
-                            //inside inner loop, create label for each image
-                            for (int j = i - 3; j < i; j++)
-                            {
-                                CreateItemLabel(j);
-                            }
-                            ReturnCarriage();
-                        }
+                        string itemID = browsePageDBUtil.GetItemList.ElementAt(i - 1).Id;
+                        CreateItemHolder(i, itemID, row);
                     }
+                    Table1.Controls.Add(row);
                 }
             }
         }
 
-        public void ReturnCarriage()
+        //Create images dynamically
+        public void CreateItemHolder(int i, string Id, HtmlTableRow row)
         {
-            string htmlString = "<br>";
-            imageContainer.Controls.Add(new LiteralControl(htmlString));
-        }
-
-        public void CreateItemLabel(int j)
-        {
-            imageContainer.Controls.Add(new Label
-            {
-                ID = $"lblItem{j}",
-                Text = browsePageDBUtil.GetItemList.ElementAt(j).Name,
-                CssClass = "imageLabelStyle"
-            });
-        }
-
-        public void CreateImageHolder(int i)
-        {
+            HtmlTableCell cell = new HtmlTableCell();
             ImageButton image = new ImageButton
             {
                 ID = $"image{i}",
@@ -107,29 +84,25 @@ namespace PopYourself
                 Width = 130,
                 CssClass = "imageStyle"
             };
-            image.Click += new ImageClickEventHandler(ImageButton_OnClick);
-            
-            imageContainer.Controls.Add(image);
+            image.PostBackUrl = $"ItemPage.aspx/?id={Id}";
+            cell.Controls.Add(image);
 
+            Item item = browsePageDBUtil.GetItem(Id);
+            LinkButton hp = new LinkButton
+            {
+                Text = item.Name,
 
-            //imageContainer.Controls.Add(image = new ImageButton
-            //{
+            };
+            hp.PostBackUrl = $"ItemPage.aspx/?id={Id}";
+            cell.Controls.Add(hp);
 
-            //});
-            //image.Command += new CommandEventHandler(ImageButton_OnCommand);
-            //ImageButton fuck = (ImageButton)FindControl($"image{i}");
-            //fuck.Click += new ImageClickEventHandler(ImageButton_OnCommand);
-            //image.Click += new ImageClickEventHandler(Unnamed1_Click);
+            row.Controls.Add(cell);
         }
 
-        protected void ImageButton_OnClick(object sender, ImageClickEventArgs e)
+        //Redirect to another page
+        public void NewPage(string id)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Hello');", true);
-        }
-
-        protected void Unnamed1_Click(object sender, ImageClickEventArgs e)
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Hello');", true);
+            Response.Redirect($"ItemPage.aspx/?id={id}");
         }
     }
 }
