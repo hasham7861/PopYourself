@@ -44,14 +44,14 @@ DATE: August 10, 2019
                         <asp:Label ID="itemName" runat="server" Text="Name: "></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="itemNameBox" runat="server" CssClass="controlBox"></asp:TextBox>
+                        <asp:TextBox class="form-control" ID="itemNameBox" runat="server" ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <asp:Label ID="categoryLbl" runat="server" Text="Category: "></asp:Label></td>
                     <td>
-                        <asp:DropDownList ID="categoryDlist" runat="server" CssClass="controlBox">
+                        <asp:DropDownList class="form-control" ID="categoryDlist" runat="server" >
                             <asp:ListItem>Select Category</asp:ListItem>
                             <asp:ListItem>Toys</asp:ListItem>
                             <asp:ListItem>Comics/Magazines</asp:ListItem>
@@ -63,31 +63,32 @@ DATE: August 10, 2019
                     <td>
                         <asp:Label ID="priceLbl" runat="server" Text="Price: "></asp:Label></td>
                     <td>
-                        <asp:TextBox ID="priceBox" runat="server" CssClass="controlBox"></asp:TextBox></td>
+                        <asp:TextBox class="form-control" ID="priceBox" runat="server" ></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td>
                         <asp:Label ID="cityLbl" runat="server" Text="City: "></asp:Label></td>
                     <td>
-                        <asp:TextBox ID="cityBox" runat="server" CssClass="controlBox"></asp:TextBox></td>
+                        <asp:TextBox class="form-control" ID="cityBox" runat="server" ></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td>
                         <asp:Label ID="pNumLbl" runat="server" Text="Phone: "></asp:Label></td>
                     <td>
-                        <asp:TextBox ID="pNumBox" runat="server" CssClass="controlBox"></asp:TextBox></td>
+                        <asp:TextBox class="form-control" ID="pNumBox" runat="server" ></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td>
                         <asp:Label ID="descLbl" runat="server" Text="Description"></asp:Label></td>
                     <td>
-                        <asp:TextBox ID="descBox" runat="server" TextMode="MultiLine" Rows="5" Width="300px"></asp:TextBox></td>
+                        <asp:TextBox class="form-control" ID="descBox" runat="server" TextMode="MultiLine" Rows="5" Width="300px"></asp:TextBox></td>
                 </tr>
             </table>
         </div>
     </div>
+    <br />
     <div class="btn-div">
-        <asp:Button ID="postAdbtn" runat="server" Text="Post Ad" OnClick="postAdbtn_Click" />
-        <asp:Button ID="cancelBtn" runat="server" Text="Cancel" OnClick="cancelBtn_Click" />
+        <asp:Button style="background-color: #6A84FF; color: white; padding: 5px 50px" class="btn" ID="postAdbtn" runat="server" Text="Post Ad" OnClick="postAdbtn_Click" />
+        <asp:Button style="background-color: #6A84FF; color: white; padding: 5px 50px" class="btn" ID="cancelBtn" runat="server" Text="Cancel" OnClick="cancelBtn_Click" />
     </div>
 </asp:Content>
