@@ -22,7 +22,7 @@ namespace PopYourself
                                "" + "Initial Catalog=pop_cul_db;" +
                                "Integrated Security=SSPI;Persist Security Info=false";
             connect = new SqlConnection(connectionString);
-            string query = $"SELECT * FROM ad_post WHERE account_id = (select account_id from account where username = '{(string)Session["username"]}')";
+            string query = $"SELECT * FROM ad_post WHERE account_id = '{(string)Session["account_id"]}'";
             SqlDataAdapter sda = new SqlDataAdapter(query, connect);
             DataTable dtbl = new DataTable();
             sda.Fill(dtbl);

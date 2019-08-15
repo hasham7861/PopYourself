@@ -18,12 +18,12 @@ namespace PopYourself
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         protected void postAdbtn_Click(object sender, EventArgs e)
         {
-            if(Page.IsValid)
+            if (Page.IsValid)
             {
                 string fileName = "";
                 if (FileUpload1.HasFile)
@@ -51,17 +51,17 @@ namespace PopYourself
                 };
 
                 bool validItem = PostAdDBUtil.CreateItem(item);
-
-                if (!validItem)
-                    Response.Write($"Ooops, something went wrong! {(string)Session["account_id"]}");
+                if (validItem)
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('New ad posted!'); window.location = 'MyAds.aspx';", true);
                 else
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('New ad posted!');window.location = 'MyAds.aspx", true);
+                    Response.Write($"Ooops, something went wrong! {(string)Session["account_id"]}");
+
             }
             else
             {
-                Response.Write("bruh!");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "An Error Occured.", true);
             }
-            
+
         }
 
         protected void cancelBtn_Click(object sender, EventArgs e)
@@ -85,7 +85,7 @@ namespace PopYourself
                 args.IsValid = false;
             }
 
-            if(FileUpload1.HasFile)
+            if (FileUpload1.HasFile)
             {
                 string extension = System.IO.Path.GetExtension(FileUpload1.FileName.ToLower());
                 if (extension == ".jpg" || extension == ".png" || extension == ".gif")
@@ -103,7 +103,7 @@ namespace PopYourself
                     args.IsValid = false;
                 }
             }
-            
+
         }
     }
 }
