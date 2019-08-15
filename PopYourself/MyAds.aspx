@@ -10,7 +10,7 @@ DATE: August 10, 2019
       <h1>Username Ads</h1>
   </div>
     <div class="post-button-div">
-        <asp:Button ID="postNewAd" runat="server" Text="Post New Ad" OnClick="postNewAd_Click" />
+        <asp:Button style="background-color: #6A84FF; color: white; padding: 5px 50px" ID="postNewAd" runat="server" Text="Post New Ad" OnClick="postNewAd_Click" class="btn"/>
     </div>
     <br />
     <div class="grid-view-div">

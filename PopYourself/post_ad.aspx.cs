@@ -59,7 +59,7 @@ namespace PopYourself
             }
             else
             {
-                Response.Write("bruh!");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "An Error Occured.", true);
             }
 
         }
