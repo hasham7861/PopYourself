@@ -1,16 +1,9 @@
-﻿//AUTHOR: Cyrus Alatraca
-//ID: 991146084
-//DATE: August 10, 2019
-using PopYourself.Handler;
-using PopYourself.Model;
+﻿using PopYourself.Model;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using PopYourself.DatabaseOperations;
+
 
 namespace PopYourself
 {
@@ -18,7 +11,8 @@ namespace PopYourself
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if((string) Session["account_id"] == "")
+                Response.Redirect("Default.aspx");
         }
 
         protected void postAdbtn_Click(object sender, EventArgs e)
@@ -50,7 +44,7 @@ namespace PopYourself
                     Price = decimal.Parse(priceBox.Text)
                 };
 
-                bool validItem = PostAdDBUtil.CreateItem(item);
+                bool validItem = PostAdDatabaseOperations.CreateItem(item);
                 if (validItem)
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('New ad posted!'); window.location = 'MyAds.aspx';", true);
                 else

@@ -1,11 +1,4 @@
-﻿//AUTHOR: Robert Sarmiento
-//ID: 991471234
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace PopYourself.Model
+﻿namespace PopYourself.Model
 {
     public class Item
     {

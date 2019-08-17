@@ -1,13 +1,7 @@
-﻿using PopYourself.Handler;
-using PopYourself.Model;
+﻿using PopYourself.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-//Author: Robert Sarmiento
-//ID: 991471234
+using PopYourself.DatabaseOperations;
+
 namespace PopYourself
 {
     public partial class ItemPage : System.Web.UI.Page
@@ -16,11 +10,12 @@ namespace PopYourself
         //display the result to itempage
         protected void Page_Load(object sender, EventArgs e)
         {   
+            if((string) Session["account_id"] == "")
+                Response.Redirect("Default.aspx");
 
-            BrowsePageDBUtil db = new BrowsePageDBUtil();
 
             string id = (string)Request.Params.Get("id");
-            Item item = db.GetItem(id);
+            Item item = BrowseDatabaseOperations.GetItem(id);
 
             name.Text = item.Name;
             

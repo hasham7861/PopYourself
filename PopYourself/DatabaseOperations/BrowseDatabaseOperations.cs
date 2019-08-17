@@ -3,49 +3,21 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
+using PopYourself.Util;
 
-//Author: Robert Sarmiento
-//ID: 991471234
-namespace PopYourself.Handler
+namespace PopYourself.DatabaseOperations
 {
-    public class BrowsePageDBUtil
+    internal static class BrowseDatabaseOperations
     {
-        string connectionString = null;
-        SqlConnection sqlConnection;
-        SqlCommand sqlCommand;
-        List<Item> itemList = new List<Item>();
-        public List<Item> GetItemList { get { return itemList; } set { } }
-        public string Message { get; set; }
 
-        private void OpenConnection()
-        {
-            if (sqlConnection == null)
-            {
-                connectionString = "Data Source=RB-PC\\SQLEXPRESS;" +
-                                    "" +
-                                    "Initial Catalog=pop_cul_db;" +
-                                    "Integrated Security=SSPI;Persist Security Info=false";
-
-                sqlConnection = new SqlConnection(connectionString);
-            }
-
-            if (sqlConnection.State == ConnectionState.Closed)
-                sqlConnection.Open();
-        }
-
-        private void CloseConnection()
-        {
-            if (sqlConnection.State == ConnectionState.Open)
-            {
-                sqlConnection.Close();
-            }
-        }
+        private static SqlCommand _command;
+        private static List<Item> itemList = new List<Item>();
+       
+        internal static string Message { get; set; }
 
         //Retrieve the search results from the DB
         //Display the results in browse.aspx
-        public void GetDBItem(string searchKey)
+        internal static List<Item> GetAllItems(string searchKey)
         {
             Message = "";
 
@@ -53,16 +25,16 @@ namespace PopYourself.Handler
             {
                 string query = $"SELECT * FROM dbo.item WHERE item_name LIKE '%{searchKey}%'";
 
-                OpenConnection();
+                PopCulDatabaseUtil.OpenConnection();
 
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, PopCulDatabaseUtil.cnn);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
 
                 if (dataTable.Rows.Count >= 1)
                 {
-                    sqlCommand = new SqlCommand(query, sqlConnection);
-                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    _command = new SqlCommand(query, PopCulDatabaseUtil.cnn);
+                    SqlDataReader reader = _command.ExecuteReader();
 
                     while (reader.Read())
                     {
@@ -91,13 +63,14 @@ namespace PopYourself.Handler
             }
             finally
             {
-                if (sqlConnection.State == ConnectionState.Open)
-                    sqlConnection.Close();
+                PopCulDatabaseUtil.CloseConnection();
             }
+
+            return itemList;
         }
 
         //Get the item by item ID
-        public Item GetItem(string id)
+        internal static Item GetItem(string id)
         {
             Item item = null;
             Message = "";
@@ -105,16 +78,16 @@ namespace PopYourself.Handler
             {
                 string query = $"SELECT * FROM dbo.item WHERE item_id = '{id}'";
 
-                OpenConnection();
+                PopCulDatabaseUtil.OpenConnection();
 
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, PopCulDatabaseUtil.cnn);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
 
                 if (dataTable.Rows.Count >= 1)
                 {
-                    sqlCommand = new SqlCommand(query, sqlConnection);
-                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    _command = new SqlCommand(query, PopCulDatabaseUtil.cnn);
+                    SqlDataReader reader = _command.ExecuteReader();
 
                     if (reader.Read())
                     { 
@@ -142,8 +115,7 @@ namespace PopYourself.Handler
             }
             finally
             {
-                if (sqlConnection.State == ConnectionState.Open)
-                    sqlConnection.Close();
+                PopCulDatabaseUtil.CloseConnection();
             }
             return item;
         }

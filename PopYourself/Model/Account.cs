@@ -1,7 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-
-namespace Hasham_991498453_Assignment_3
+namespace PopYourself.Model
 {
     [DataContract]
     public class Account
