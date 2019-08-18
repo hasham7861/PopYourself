@@ -10,7 +10,7 @@ namespace PopYourself.DatabaseOperations
     {
        
         private static SqlCommand _command;
-        internal static readonly string accountId = (string)System.Web.HttpContext.Current.Session["account_id"];
+        internal static string accountId = (string)System.Web.HttpContext.Current.Session["account_id"];
 
         internal static bool CreateItem(Item item)
         {

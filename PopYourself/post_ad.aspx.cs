@@ -20,12 +20,12 @@ namespace PopYourself
             if (Page.IsValid)
             {
                 string fileName = "";
-                if (FileUpload1.HasFile)
+                if (fileupload.HasFile)
                 {
                     try
                     {
-                        fileName = FileUpload1.FileName.ToLower();
-                        FileUpload1.PostedFile.SaveAs(Server.MapPath("~\\ad_image_uploads\\") + fileName);
+                        fileName = fileupload.FileName.ToLower();
+                        fileupload.PostedFile.SaveAs(Server.MapPath("~\\Content\\images\\ads\\") + fileName);
                     }
                     catch (Exception ex)
                     {
@@ -79,9 +79,9 @@ namespace PopYourself
                 args.IsValid = false;
             }
 
-            if (FileUpload1.HasFile)
+            if (fileupload.HasFile)
             {
-                string extension = System.IO.Path.GetExtension(FileUpload1.FileName.ToLower());
+                string extension = System.IO.Path.GetExtension(fileupload.FileName.ToLower());
                 if (extension == ".jpg" || extension == ".png" || extension == ".gif")
                 {
                     args.IsValid = true;

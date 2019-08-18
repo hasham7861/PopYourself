@@ -107,7 +107,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ad_image_uploads\csharpbois.png" />
     <Content Include="Browse.aspx" />
     <Content Include="Content\cyrusStyleSheet.css" />
     <Content Include="Content\Default.css" />
@@ -181,6 +180,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="DatabaseOperations\AccountDatabaseOperations.cs" />
     <Compile Include="DatabaseOperations\BrowseDatabaseOperations.cs" />
+    <Compile Include="DatabaseOperations\ItemPageDatabaseOperations.cs" />
     <Compile Include="DatabaseOperations\MyAdsDatabaseOperations.cs" />
     <Compile Include="DatabaseOperations\PostAdDatabaseOperations.cs" />
     <Compile Include="ItemPage.aspx.cs">
@@ -249,6 +249,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\images\ads\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

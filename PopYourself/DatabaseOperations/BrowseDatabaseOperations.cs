@@ -19,6 +19,9 @@ namespace PopYourself.DatabaseOperations
         //Display the results in browse.aspx
         internal static List<Item> GetAllItems(string searchKey)
         {
+            // Reset the list to view new the correct items only next item
+            itemList = new List<Item>();
+            
             Message = "";
 
             try

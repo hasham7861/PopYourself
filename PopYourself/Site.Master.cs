@@ -9,5 +9,12 @@ namespace PopYourself
         {
 
         }
+
+        public void SignOut()
+        {
+            Session.Remove("account_id");
+
+            //Response.Redirect("Default.aspx");
+        }
     }
 }

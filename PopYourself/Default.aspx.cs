@@ -8,8 +8,8 @@ namespace PopYourself
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-           
+            if (IsPostBack == false)
+                Session["account_id"] = "";
         }
 
         protected void btn_login_Click(object sender, EventArgs e)

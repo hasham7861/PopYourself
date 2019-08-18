@@ -1,8 +1,8 @@
 ﻿using PopYourself.Model;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
@@ -17,6 +17,8 @@ namespace PopYourself
         {
             if((string)Session["account_id"] == "")
                 Response.Redirect("Default.aspx");
+
+            RetrieveSearchItem();
         }
 
         //Start searching the database when user clicks on the button
@@ -29,28 +31,27 @@ namespace PopYourself
         //retrieve the search results from the database
         public void RetrieveSearchItem()
         {
-            if (lblSearch.Text != "") //when searchbox is not empty
+          
+
+            List<Item> itemList = BrowseDatabaseOperations.GetAllItems(txtItemSearch.Text);
+
+            if (BrowseDatabaseOperations.Message != "")
             {
-
-                List<Item> itemList = BrowseDatabaseOperations.GetAllItems(txtItemSearch.Text);
-
-                if (BrowseDatabaseOperations.Message != "")
-                {
-                    lblSearch.Text = BrowseDatabaseOperations.Message;
-                }
-                else
-                {
-                    HtmlTableRow row = new HtmlTableRow();
-                    
-
-                    int length = itemList.Count;
-                    for (int i = 0; i < length; i++)
-                    {
-                        PopulateItemIntoView(i, itemList, row);
-                    }
-                    Table1.Controls.Add(row);
-                }
+                lblSearch.Text = BrowseDatabaseOperations.Message;
             }
+            else
+            {
+                HtmlTableRow row = new HtmlTableRow();
+                
+
+                int length = itemList.Count;
+                for (int i = 0; i < length; i++)
+                {
+                    PopulateItemIntoView(i, itemList, row);
+                }
+                Table1.Controls.Add(row);
+            }
+            
         }
 
         
@@ -58,11 +59,12 @@ namespace PopYourself
         {
 
             HtmlTableCell cell = new HtmlTableCell();
-            string itemId = itemList[i].ToString();
+            string itemId = itemList[i].Id;
+            string imagePath = "Content/images/ads/" + itemList[i].Image;
             ImageButton image = new ImageButton
             {
                 ID = $"item{i}",
-                ImageUrl = File.Exists(itemList[i].Image) ? itemList[i].Image : "Content/images/defaultPostImage.png",
+                ImageUrl = File.Exists(Server.MapPath(imagePath)) ? imagePath: "Content/images/defaultPostImage.png",
                 Height = 150,
                 Width = 130,
                 CssClass = "imageStyle"
@@ -74,6 +76,9 @@ namespace PopYourself
             LinkButton hp = new LinkButton
             {
                 Text = itemList[i].Name,
+                ControlStyle = {
+                    BackColor = Color.PaleVioletRed,
+                    ForeColor = Color.White}
 
             };
             hp.PostBackUrl = $"ItemPage.aspx/?id={itemId}";

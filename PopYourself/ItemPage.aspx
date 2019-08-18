@@ -5,7 +5,7 @@
     <div class="container" runat="server" style="text-align:center; margin-top:30px;">
         <div class="row">
             <div id="image" class="col">
-                <asp:Image ImageUrl="ad_image_uploads/csharpbois.png" Height="150px" Width="130px" runat="server" />
+                <asp:Image ID="image" ImageUrl="Content/images/defaultPostImage.png" Height="150px" Width="130px" runat="server" />
             </div>
 
             <div id="itemInfo" class="col" style="background-color:#F9F9F9; margin-top:20px;padding:20px; display:inline-block; border-radius:10px;">
@@ -16,7 +16,7 @@
         </div>
         <div class="row">
             <div id="contactSeller" class="col" runat="server">
-                <a href="mailto:test@gmail.com" id="btnContactSeller" Style="background-color: #6A84FF; color: white; padding:10px;">Contact Seller</a>
+                <a  runat="server" href="mailto:test@gmail.com" ID="btnContactSeller" Style="background-color: #6A84FF; color: white; padding:10px;">Contact Seller</a>
             </div>
         </div>
     </div>

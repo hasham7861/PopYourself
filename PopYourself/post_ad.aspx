@@ -27,7 +27,15 @@
                 <asp:Image ID="uploadedImg" runat="server" Height="200px" Width="200px" Style="border-radius: 15px;" />
             </div>
             <div class="img-btn">
-                <asp:FileUpload ID="FileUpload1" runat="server" onchange="showpreview(this);" />
+
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                        <asp:FileUpload ID="fileupload" runat="server" onchange="showpreview(this);" />
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:PostBackTrigger ControlID="postAdbtn" />
+                    </Triggers>
+                </asp:UpdatePanel>
                 <br />
                 <asp:Label ID="statusLbl" runat="server" Text=""></asp:Label>
             </div>
