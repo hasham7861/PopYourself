@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ItemPage.aspx.cs" Inherits="PopYourself.ItemPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-     <link href="Content/robertStyleSheet.css" rel="stylesheet" type="text/css" />   
+     <link href="Content/browse.page.css" rel="stylesheet" type="text/css" />   
     <div class="container" runat="server" style="text-align:center; margin-top:30px;">
         <div class="row">
             <div id="image" class="col">

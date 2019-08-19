@@ -7,14 +7,12 @@ namespace PopYourself
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         public void SignOut()
         {
             Session.Remove("account_id");
-
-            //Response.Redirect("Default.aspx");
         }
     }
 }
