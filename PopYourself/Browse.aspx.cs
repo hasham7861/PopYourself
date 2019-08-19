@@ -17,8 +17,8 @@ namespace PopYourself
         {
             if((string)Session["account_id"] == "")
                 Response.Redirect("Default.aspx");
-
-            RetrieveSearchItem();
+            if(IsPostBack == false)
+                RetrieveSearchItem();
         }
 
         //Start searching the database when user clicks on the button
@@ -73,14 +73,22 @@ namespace PopYourself
             cell.Controls.Add(image);
 
  
+            
             LinkButton hp = new LinkButton
             {
                 Text = itemList[i].Name,
                 ControlStyle = {
-                    BackColor = Color.PaleVioletRed,
-                    ForeColor = Color.White}
+                    
+                    BackColor =  System.Drawing.ColorTranslator.FromHtml("#6A84FF"),
+                    ForeColor = Color.White,
+                    
+
+                }
+                
 
             };
+           
+
             hp.PostBackUrl = $"ItemPage.aspx/?id={itemId}";
             cell.Controls.Add(hp);
 

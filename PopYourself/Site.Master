@@ -15,8 +15,6 @@
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="Content/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link href="Content/cyrusStyleSheet.css" rel="stylesheet" type="text/css" />
-    
 </head>
 <body>
     <form runat="server">
@@ -51,10 +49,10 @@
                     <a class="navbar-brand" runat="server" href="~/">PY</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/Default.aspx">SignOut</a></li>
+                    <ul class="nav navbar-nav nav-pills">
                         <li><a runat="server" href="~/Browse">Browse</a></li>
                         <li><a runat="server" href="MyAds.aspx">My Ads</a></li>
+                        <li><a runat="server" href="~/Default.aspx">SignOut</a></li>
                     </ul>
                 </div>
             </div>
