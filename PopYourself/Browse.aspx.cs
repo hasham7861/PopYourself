@@ -65,8 +65,8 @@ namespace PopYourself
             {
                 ID = $"item{i}",
                 ImageUrl = File.Exists(Server.MapPath(imagePath)) ? imagePath: "Content/images/defaultPostImage.png",
-                Height = 150,
-                Width = 130,
+                Height = 200,
+                Width = 200,
                 CssClass = "imageStyle"
             };
             image.PostBackUrl = $"ItemPage.aspx/?id={itemId}";

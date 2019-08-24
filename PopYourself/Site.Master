@@ -66,12 +66,7 @@
                     </asp:ContentPlaceHolder>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> Pop Yourself</p>
-            </footer>
         </div>
-
     </form>
 </body>
 </html>

@@ -5,7 +5,7 @@
     
     <div style="display: flex; text-align: center; flex-direction: column; margin-top: 50px;">
         <header style="text-align: center; color:#6a84ff">
-            <h2 style="font-size: 40px;">BRØWSE POP ITEMS</h2>
+            <h2 style="font-size: 40px;">BRØWSE PØP ITEMS</h2>
         </header>
         <br/>
         <div id="search" style="display: flex; justify-content: center;">

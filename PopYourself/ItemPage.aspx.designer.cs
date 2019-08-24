@@ -13,15 +13,6 @@ namespace PopYourself {
     public partial class ItemPage {
         
         /// <summary>
-        /// image control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image;
-        
-        /// <summary>
         /// name control.
         /// </summary>
         /// <remarks>
@@ -40,6 +31,15 @@ namespace PopYourself {
         protected global::System.Web.UI.WebControls.Label price;
         
         /// <summary>
+        /// image control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image image;
+        
+        /// <summary>
         /// desc control.
         /// </summary>
         /// <remarks>
@@ -47,15 +47,6 @@ namespace PopYourself {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label desc;
-        
-        /// <summary>
-        /// contactSeller control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl contactSeller;
         
         /// <summary>
         /// btnContactSeller control.
