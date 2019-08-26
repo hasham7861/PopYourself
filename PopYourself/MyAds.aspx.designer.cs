@@ -13,6 +13,15 @@ namespace PopYourself {
     public partial class Contact {
         
         /// <summary>
+        /// lbl_username control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_username;
+        
+        /// <summary>
         /// postNewAd control.
         /// </summary>
         /// <remarks>

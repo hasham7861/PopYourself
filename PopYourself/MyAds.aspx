@@ -1,26 +1,21 @@
 ﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MyAds.aspx.cs" Inherits="PopYourself.Contact" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="grid-page-header">
-      <h1>Username Ads</h1>
-  </div>
-    <div class="post-button-div">
+    <link href="/Content/myads.page.css" rel="stylesheet" />
+    
+      <h1><asp:Label runat="server" ID="lbl_username"></asp:Label></h1>
+   
+    <div>
         <asp:Button style="background-color: #6A84FF; color: white; padding: 5px 50px" ID="postNewAd" runat="server" Text="Post New Ad" OnClick="postNewAd_Click" class="btn"/>
     </div>
     <br />
-    <div class="grid-view-div">
-        <asp:GridView ID="userAdGrid" runat="server" AutoGenerateColumns="false">
+    <div>
+        <asp:GridView ID="userAdGrid" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="userAdGrid_SelectedIndexChanged">
             <Columns>
-                <asp:TemplateField>
-                    <ItemTemplate>
-                        <asp:HiddenField ID="hdnAdPostId" runat="server" Value='<%#DataBinder.Eval(Container.DataItem, "ad_id") %>'/>
-                    </ItemTemplate>
-                </asp:TemplateField>
                 <asp:BoundField DataField="post_title" HeaderText="Title" />
                 <asp:BoundField DataField="post_date" HeaderText="Date Posted" Readonly="true"/>
                 <asp:BoundField DataField="post_expiry" HeaderText="Expiry Date" Readonly="true"/>
-                <asp:CommandField ShowEditButton="true"/>
-                <asp:CommandField ShowDeleteButton="true"/>
+               
             </Columns>
         </asp:GridView>
     </div>

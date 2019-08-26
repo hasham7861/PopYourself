@@ -111,6 +111,7 @@
     <Content Include="Content\Default.css" />
     <Content Include="Content\images\defaultPostImage.png" />
     <Content Include="Content\browse.page.css" />
+    <Content Include="Content\myads.page.css" />
     <Content Include="Content\postad.page.css" />
     <Content Include="ItemPage.aspx" />
     <Content Include="MyAds.aspx" />

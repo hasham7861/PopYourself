@@ -18,8 +18,6 @@ body {
     
 }
 
-
-
 .myNavbar a{
     color: white;
 }
@@ -28,9 +26,6 @@ ul li a:hover, ul li a:focus {
     color: black;
     background-color: white;
 }
-
-
-
 
 
 /* Responsive: Portrait tablets and up */

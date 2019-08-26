@@ -1,0 +1,22 @@
+﻿table {
+    border: none;
+}
+td {
+    padding: 10px 20px;
+    border: none;
+}
+
+th {
+    background: #6A84FF;
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+
+tr {
+    
+    border-bottom: 1px solid grey;
+    
+    
+}
+
