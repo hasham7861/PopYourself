@@ -7,16 +7,16 @@ Sell your pop culture items here
 3. Then run the app.
 
 ### Login
-https://github.com/hasham7861/PopYourself/blob/master/AppImages/LoginPage.JPG
+![](AppImages/LoginPage.JPG)
 
 ### Register
-https://github.com/hasham7861/PopYourself/blob/master/AppImages/RegisterPage.JPG?raw=true
+![](AppImages/RegisterPage.JPG)
 
 ### Browse Items
-https://github.com/hasham7861/PopYourself/blob/master/AppImages/BrowseItemsPage.JPG?raw=true
+![](AppImages/BrowseItemsPage.JPG)
 
 ### Post Ad
-https://github.com/hasham7861/PopYourself/blob/master/AppImages/PostAdPage.JPG?raw=true
+![](AppImages/PostAdPage.JPG)
 
 ### My Ads
-https://github.com/hasham7861/PopYourself/blob/master/AppImages/MyAdsPage.JPG?raw=true
+![](AppImages/MyAdsPage.JPG)
