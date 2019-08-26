@@ -6,17 +6,17 @@ Sell your pop culture items here
 2. Then open the app via visual studio 2017 or 2019. 
 3. Then run the app.
 
-### Login
+## ~~ Login ~~
 ![](AppImages/LoginPage.JPG)
 
-### Register
+## ~~ Register ~~
 ![](AppImages/RegisterPage.JPG)
 
-### Browse Items
+## ~~ Browse Items ~~
 ![](AppImages/BrowseItemsPage.JPG)
 
-### Post Ad
+## ~~ Post Ad ~~
 ![](AppImages/PostAdPage.JPG)
 
-### My Ads
+## ~~ My Ads ~~
 ![](AppImages/MyAdsPage.JPG)
