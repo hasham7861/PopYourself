@@ -1,5 +1,5 @@
 # PopYourself
-Sell your pop culture items here
+Sell your pop culture items here. Walkthrough: https://youtu.be/x1zan_Gik7M
 
 ## To use the app
 1. Simply install microsoft sql server client. Also Microsoft Sql Server Managment Studio.
