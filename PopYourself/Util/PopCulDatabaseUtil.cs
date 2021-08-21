@@ -14,10 +14,9 @@ namespace PopYourself.Util
         {
             if (cnn == null)
             {
-                connectionString = "Data Source=LAPTOP-B5DGGLB7\\SQLEXPRESS;" +
-                                   "" +
+                connectionString = "Data Source=DESKTOP-23I74UJ;" +
                                    "Initial Catalog=pop_cul_db;" +
-                                   "Integrated Security=SSPI;Persist Security Info=false";
+                                   "Integrated Security=SSPI;";
                 cnn = new SqlConnection(connectionString);
             }
 
